@@ -25,17 +25,14 @@
 </head>
 <body class="page-room">
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" aria-describedby="gate-legal">
-  <div class="gate__scene" aria-hidden="true">
-    <picture>
-      <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcset="assets/board/gate-tall-720.webp 720w, assets/board/gate-tall-1080.webp 1080w" sizes="100vw">
-      <img src="assets/board/gate-wide-1280.webp" srcset="assets/board/gate-wide-1280.webp 1280w, assets/board/gate-wide-1920.webp 1920w" sizes="100vw" width="1920" height="1072" alt="" fetchpriority="high" draggable="false">
-    </picture>
-  </div>
-  <div class="gate__ramp" aria-hidden="true">
-    <picture>
-      <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcset="assets/board/ramp-tall-720.webp 720w, assets/board/ramp-tall-1080.webp 1080w" sizes="100vw">
-      <img src="assets/board/ramp-wide-1280.webp" srcset="assets/board/ramp-wide-1280.webp 1280w, assets/board/ramp-wide-1920.webp 1920w" sizes="100vw" width="1920" height="1072" alt="" loading="lazy" decoding="async" draggable="false">
-    </picture>
+  <div class="space" aria-hidden="true">
+    <canvas class="space__stars"></canvas>
+    <div class="space__twinkles"></div>
+    <div class="space__comets"></div>
+    <div class="space__ship"><img src="assets/board/ship-cut.webp" width="1086" height="418" alt="" decoding="async" draggable="false"></div>
+    <div class="space__beam"></div>
+    <div class="space__astro"><img class="space__loop" src="assets/board/astro-still.webp" data-loop="assets/board/astro-float.webp" width="241" height="394" alt="" fetchpriority="high" draggable="false"></div>
+    <div class="space__flash"></div>
   </div>
   <div class="gate__shade" aria-hidden="true"></div>
   <div class="gate__panel">

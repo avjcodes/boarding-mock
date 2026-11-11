@@ -22,22 +22,155 @@
   if (!gate) html.classList.remove('gate-pending');
   else if (html.classList.contains('gate-pending')) openGate();
 
-  /* where the hatch is in each picture, as a share of its width and height */
-  const HATCH = { wide: [0.714, 0.506], tall: [0.734, 0.49] };
-  const RAMP = { wide: [0.5, 0.36], tall: [0.51, 0.42] };
+  /* ---------- the scene: stars, the odd comet, the floating astronaut ---------- */
+  const space = gate && gate.querySelector('.space');
+  if (space) setupSpace(space);
 
-  function originOf(img, pts) {
-    if (!img || !img.naturalWidth) return null;
-    const [fx, fy] = /tall/.test(img.currentSrc || img.src) ? pts.tall : pts.wide;
-    const r = img.getBoundingClientRect();
-    if (!r.width || !r.height) return null;
-    const s = Math.max(r.width / img.naturalWidth, r.height / img.naturalHeight);
-    const w = img.naturalWidth * s;
-    const h = img.naturalHeight * s;
-    const pos = getComputedStyle(img).objectPosition.split(' ').map(parseFloat);
-    const px = Number.isFinite(pos[0]) ? pos[0] / 100 : 0.5;
-    const py = Number.isFinite(pos[1]) ? pos[1] / 100 : 0.5;
-    return [((r.width - w) * px + fx * w) / r.width * 100, ((r.height - h) * py + fy * h) / r.height * 100];
+  /* a repeatable random sequence, so the sky is the same on every visit */
+  function seeded(seed) {
+    let s = seed;
+    return () => { s = (s + 0x6D2B79F5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+
+  function setupSpace(sp) {
+    const astro = sp.querySelector('.space__astro');
+    const panel = gate.querySelector('.gate__panel');
+    const ask = gate.querySelector('.gate__ask');
+    const act = gate.querySelector('.gate__act');
+    const upright = matchMedia('(max-aspect-ratio: 1/1)');
+
+    /* he shows as a still first (13 KB, the loop's first frame) and starts floating once the loop (1.8 MB) is in;
+       under reduced motion or the site's motion switch he stays still, and when the gate is not showing (back in the
+       room from an inner page) the loop is not fetched at all */
+    const loop = sp.querySelector('.space__loop');
+    if (loop && loop.dataset.loop && moving() && html.classList.contains('gate-pending')) {
+      const pre = new Image();
+      if ('fetchPriority' in pre) pre.fetchPriority = 'high';
+      pre.src = loop.dataset.loop;
+      const swap = () => { if (moving()) loop.src = pre.src; };
+      if (pre.decode) pre.decode().then(swap, () => {}); else pre.addEventListener('load', swap, { once: true });
+    }
+
+    /* stars: drawn once for the window's size, crisp at any pixel density, the same sky every time (seeded) */
+    const canvas = sp.querySelector('.space__stars');
+    const draw = () => {
+      const w = sp.clientWidth;
+      const h = sp.clientHeight;
+      if (!w || !h || !canvas.getContext) return;
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      const rnd = seeded(1337);
+      const count = Math.round((w * h) / 3600);
+      for (let i = 0; i < count; i++) {
+        const x = rnd() * w;
+        const y = rnd() * h;
+        const m = rnd();
+        const r = m < 0.86 ? 0.35 + rnd() * 0.45 : m < 0.98 ? 0.8 + rnd() * 0.5 : 1.3 + rnd() * 0.5;
+        const a = m < 0.86 ? 0.22 + rnd() * 0.35 : 0.55 + rnd() * 0.4;
+        const tint = rnd();
+        const c = tint < 0.12 ? '205,222,255' : tint < 0.2 ? '255,236,214' : '240,244,250';
+        ctx.fillStyle = `rgba(${c},${a.toFixed(2)})`;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+    /* the open sky: away from the words and from him (comets and the breathing stars stay in it) */
+    const clear = (x, y, pad) => {
+      const boxes = [astro.getBoundingClientRect()];
+      if (upright.matches) boxes.push(ask.getBoundingClientRect(), act.getBoundingClientRect());
+      else boxes.push(panel.getBoundingClientRect());
+      return !boxes.some((r) => r.width && x > r.left - pad && x < r.right + pad && y > r.top - pad && y < r.bottom + pad);
+    };
+
+    /* a few brighter stars breathe slowly (a CSS animation, off under reduced motion and the motion switch) */
+    const tw = sp.querySelector('.space__twinkles');
+    const placeTwinkles = () => {
+      if (!tw) return;
+      tw.textContent = '';
+      const w = sp.clientWidth;
+      const h = sp.clientHeight;
+      if (!w || !h) return;
+      const rnd = seeded(4242);
+      const want = Math.round(Math.min(18, Math.max(8, (w * h) / 70000)));
+      for (let placed = 0, tries = 0; placed < want && tries < 300; tries++) {
+        const x = rnd() * w;
+        const y = rnd() * h;
+        const size = 1.6 + rnd() * 1.6;
+        const dur = 2.6 + rnd() * 3.4;
+        const lag = -rnd() * 6;
+        if (!clear(x, y, 28)) continue;
+        const s = document.createElement('i');
+        s.className = 'twinkle';
+        s.style.setProperty('--x', `${(x / w * 100).toFixed(2)}%`);
+        s.style.setProperty('--y', `${(y / h * 100).toFixed(2)}%`);
+        s.style.setProperty('--s', `${size.toFixed(1)}px`);
+        s.style.setProperty('--d', `${dur.toFixed(2)}s`);
+        s.style.setProperty('--dl', `${lag.toFixed(2)}s`);
+        tw.appendChild(s);
+        placed++;
+      }
+    };
+
+    let rz = 0;
+    addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { draw(); placeTwinkles(); }); });
+    draw();
+    placeTwinkles();
+
+    /* comets: one every 6 to 10 s, far behind him, in open sky only. Wide screens: right of the words and above his
+       helmet, falling right to left. Upright screens: across the band between the question and his helmet. */
+    const layer = sp.querySelector('.space__comets');
+    let timer = 0;
+    const schedule = (ms) => { clearTimeout(timer); timer = setTimeout(spawn, ms); };
+    function spawn() {
+      const live = html.classList.contains('gate-pending') && !html.classList.contains('is-boarding');
+      if (!live) return;
+      schedule(6000 + Math.random() * 4000);
+      if (document.hidden || !moving() || !layer.animate) return;
+      const w = sp.clientWidth;
+      const him = astro.getBoundingClientRect();
+      const len = 110 + Math.random() * 110;
+      let x0; let y0; let x1; let y1;
+      if (upright.matches) {
+        const top = ask.getBoundingClientRect().bottom + 16;
+        const bottom = him.top - 16;
+        if (bottom - top < 24) return;
+        const fromLeft = Math.random() < 0.5;
+        y0 = top + Math.random() * (bottom - top) * 0.6;
+        y1 = Math.min(bottom, y0 + (bottom - top) * (0.15 + Math.random() * 0.3));
+        x0 = fromLeft ? -16 : w + 16 + len;
+        x1 = fromLeft ? w + 16 + len : -16;
+      } else {
+        const left = panel.getBoundingClientRect().right + 48;
+        const bottom = him.top - 24;
+        if (w - left < 200 || bottom < 120) return;
+        x0 = left + (w - left) * (0.45 + Math.random() * 0.6);
+        y0 = bottom * Math.random() * 0.45 - 20;
+        const slope = 0.3 + Math.random() * 0.3;
+        const travel = Math.max(80, Math.min(x0 - left, (bottom - y0) / slope, w * 0.4));
+        x1 = x0 - travel;
+        y1 = y0 + travel * slope;
+      }
+      /* the line's right end is its head: shift by its length so the head runs x0,y0 to x1,y1 */
+      const ang = Math.atan2(y1 - y0, x1 - x0) * 180 / Math.PI;
+      const at = (x, y) => `translate(${(x - len).toFixed(1)}px, ${y.toFixed(1)}px) rotate(${ang.toFixed(1)}deg)`;
+      const c = document.createElement('i');
+      c.className = 'comet';
+      c.style.setProperty('--len', `${len.toFixed(0)}px`);
+      layer.appendChild(c);
+      const anim = c.animate([
+        { transform: at(x0, y0), opacity: 0 },
+        { opacity: 1, offset: 0.15 },
+        { opacity: 1, offset: 0.72 },
+        { transform: at(x1, y1), opacity: 0 },
+      ], { duration: 1300 + Math.random() * 900, easing: 'linear' });
+      anim.onfinish = () => c.remove();
+    }
+    if (html.classList.contains('gate-pending')) schedule(2200);
   }
 
   function openGate() {
@@ -83,26 +216,35 @@
     });
   }
 
-  /* Yes: push in toward the hatch, the ramp takes over, then the room. About 1.9 s, once per answer. */
+  /* Yes: the ship comes down, the beam takes him up into the hatch, the hatch flashes, the room fades in. About 3.3 s;
+     the timing lives in board.v1.css. */
   function board(done) {
     if (!moving()) { done(); return; }
-    const scene = gate.querySelector('.gate__scene img');
-    const ramp = gate.querySelector('.gate__ramp img');
-    const h = originOf(scene, HATCH);
-    const r = originOf(ramp, RAMP);
-    if (h) { gate.style.setProperty('--hx', h[0].toFixed(2) + '%'); gate.style.setProperty('--hy', h[1].toFixed(2) + '%'); }
-    if (r) { gate.style.setProperty('--rx', r[0].toFixed(2) + '%'); gate.style.setProperty('--ry', r[1].toFixed(2) + '%'); }
     void gate.offsetWidth;   // start the transitions from the resting frame
     html.classList.add('is-boarding');
-    /* the room shows once its picture is ready, never earlier than 1.25 s and never later than 3 s */
-    const ready = roomImg && roomImg.decode ? roomImg.decode().catch(() => {}) : Promise.resolve();
-    const atLeast = new Promise((res) => setTimeout(res, 1250));
-    const atMost = new Promise((res) => setTimeout(res, 3000));
-    Promise.race([Promise.all([ready, atLeast]), atMost]).then(() => {
+    let arrived = false;
+    const onKey = (e) => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); arrive(); } };
+    function arrive() {
+      if (arrived) return;
+      arrived = true;
+      gate.removeEventListener('pointerdown', arrive);
+      removeEventListener('keydown', onKey, true);
       html.classList.add('is-arriving');
       setTimeout(done, 600);
       setTimeout(() => html.classList.remove('is-arriving'), 1150);
-    });
+    }
+    /* seen it already: a tap, a click or a key goes straight to the room (not in the first 0.6 s, so a double tap on
+       Yes still shows the whole move) */
+    setTimeout(() => {
+      if (arrived) return;
+      gate.addEventListener('pointerdown', arrive);
+      addEventListener('keydown', onKey, true);
+    }, 600);
+    /* the room fades in once its picture is ready, never before the flash (2.85 s) and never later than 4.6 s */
+    const ready = roomImg && roomImg.decode ? roomImg.decode().catch(() => {}) : Promise.resolve();
+    const atLeast = new Promise((res) => setTimeout(res, 2850));
+    const atMost = new Promise((res) => setTimeout(res, 4600));
+    Promise.race([Promise.all([ready, atLeast]), atMost]).then(arrive);
   }
 
   /* ---------- the main room ---------- */

@@ -59,13 +59,23 @@ p{max-width:62ch}
 .gate{position:fixed;inset:0;z-index:60;overflow:hidden;background:var(--void)}
 html:not(.gate-pending) .gate{display:none}
 html.gate-pending,html.gate-pending body{overflow:hidden}
-.gate picture{width:100%;height:100%}
-.gate__scene,.gate__ramp{position:absolute;inset:0}
-.gate__scene img,.gate__ramp img{width:100%;height:100%;max-width:none;object-fit:cover;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
-.gate__scene{transform-origin:var(--hx,72%) var(--hy,50%)}
-.gate__scene img{object-position:0% 50%}
-.gate__ramp{opacity:0;transform-origin:var(--rx,50%) var(--ry,36%)}
-.gate__ramp img{object-position:50% 40%}
+/* the scene: an astronaut adrift in deep space. On Yes the ship comes down for him. Layers moved in code: the stars,
+   the odd comet, the ship (a still), the beam, the astronaut (a transparent loop), the flash at the hatch.
+   --ax/--ay/--ah: where he floats and how tall he is; --sw: the ship's width; --hy: where its hatch stops (the ship
+   picture's hatch sits 78% across and 68.7% down it, so its top is --hy minus 0.2644 of its width). */
+.space{position:absolute;inset:0;overflow:hidden;background:#010205;--ax:62vw;--ay:66vh;--ah:38vh;--sw:min(56vw,108vh);--hy:30vh;-webkit-user-select:none;user-select:none}
+.space__stars,.space__comets,.space__twinkles{position:absolute;inset:0;width:100%;height:100%}
+.twinkle{position:absolute;left:var(--x);top:var(--y);width:var(--s,3px);height:var(--s,3px);margin:calc(var(--s,3px) / -2) 0 0 calc(var(--s,3px) / -2);border-radius:50%;background:#F2F7FF;box-shadow:0 0 0.4rem 0.05rem rgba(196,224,255,0.6);opacity:0.5}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off) .twinkle{animation:twinkle var(--d,4s) ease-in-out var(--dl,0s) infinite alternate}}
+@keyframes twinkle{from{opacity:0.12;transform:scale(0.55)}to{opacity:0.95;transform:none}}
+.comet{position:absolute;left:0;top:0;width:var(--len,170px);height:2px;margin-top:-1px;border-radius:2px;background:linear-gradient(90deg,rgba(214,236,255,0),rgba(214,236,255,0.8));transform-origin:100% 50%;opacity:0;pointer-events:none}
+.comet::after{content:"";position:absolute;right:-3px;top:-2px;width:6px;height:6px;border-radius:50%;background:#F4FAFF;box-shadow:0 0 0.6rem 0.15rem rgba(190,225,255,0.75)}
+.space__ship{position:absolute;left:calc(var(--ax) - var(--sw) * 0.78);top:calc(var(--hy) - var(--sw) * 0.2644);width:var(--sw);transform:translateY(-125vh);pointer-events:none}
+.space__ship img{display:block;width:100%;height:auto;max-width:none;-webkit-user-drag:none}
+.space__beam{position:absolute;left:calc(var(--ax) - 15vw);top:var(--hy);width:30vw;height:calc(100% - var(--hy));-webkit-clip-path:polygon(46.5% 0,53.5% 0,100% 100%,0 100%);clip-path:polygon(46.5% 0,53.5% 0,100% 100%,0 100%);background:linear-gradient(to bottom,rgba(226,243,255,0.8),rgba(155,220,247,0.32) 50%,rgba(155,220,247,0));opacity:0;transform:scaleY(0);transform-origin:50% 0;pointer-events:none}
+.space__astro{position:absolute;left:var(--ax);top:var(--ay);height:var(--ah);transform:translate(-46.4%,-53.6%);transform-origin:46.4% 53.6%;pointer-events:none}
+.space__astro img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none}
+.space__flash{position:absolute;left:var(--ax);top:var(--hy);width:34vmin;height:34vmin;margin:-17vmin 0 0 -17vmin;border-radius:50%;background:radial-gradient(closest-side,rgba(255,252,240,0.95),rgba(255,238,196,0.4) 45%,rgba(255,238,196,0));opacity:0;transform:scale(0.2);pointer-events:none}
 .gate__shade{position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(4,7,12,0.92) 0%,rgba(4,7,12,0.74) 24%,rgba(4,7,12,0.3) 40%,rgba(4,7,12,0) 54%),
   linear-gradient(to top,rgba(4,7,12,0.5) 0%,rgba(4,7,12,0) 24%)}
@@ -81,10 +91,17 @@ html.gate-pending,html.gate-pending body{overflow:hidden}
 .gate__denied{display:grid;gap:0.4rem;justify-items:start}
 .gate__denied p{font-size:var(--step-lead);line-height:1.3;outline:0}
 
-/* boarding: one move toward the hatch, the ramp, then the room. JS sets the two origins from the pictures. */
-html.is-boarding .gate__panel,html.is-boarding .gate__shade{opacity:0;transition:opacity 260ms ease}
-html.is-boarding .gate__scene{transform:scale(2.2);transition:transform 1250ms cubic-bezier(0.5,0,0.75,0.3);will-change:transform}
-html.is-boarding .gate__ramp{opacity:1;transform:scale(1.3);transition:opacity 420ms ease 520ms,transform 1350ms cubic-bezier(0.3,0,0.6,1) 520ms;will-change:transform,opacity}
+/* boarding, about 3.4 s: the question goes, the ship comes down and settles into a hover (0.06 to 1.46 s), the beam
+   opens (1.1 s) and lights him, he is pulled up and shrinks into the hatch (1.35 to 2.75 s), the hatch flashes (2.62 s),
+   the room fades in (2.85 s). A tap, a click or Enter/Space/Escape during the move goes straight to the room. */
+html.is-boarding .gate__panel,html.is-boarding .gate__shade{opacity:0;transition:opacity 280ms ease}
+html.is-boarding .space__ship{animation:descend 1400ms 60ms both;will-change:transform}
+@keyframes descend{0%{transform:translateY(-125vh);animation-timing-function:cubic-bezier(0.2,0.65,0.35,1)}72%{transform:translateY(1.4vh);animation-timing-function:cubic-bezier(0.45,0,0.55,1)}100%{transform:none}}
+html.is-boarding .space__beam{animation:beam 1900ms ease 1100ms both}
+@keyframes beam{0%{opacity:0;transform:scaleY(0)}18%{opacity:1;transform:none}82%{opacity:1;transform:none}100%{opacity:0;transform:scaleX(0.15)}}
+html.is-boarding .space__astro{transform:translate(-46.4%,-53.6%) translateY(calc(var(--hy) - var(--ay))) scale(0.06);opacity:0;filter:brightness(1.22) saturate(0.85);transition:transform 1400ms cubic-bezier(0.55,0,0.85,0.35) 1350ms,opacity 110ms ease-in 2650ms,filter 450ms ease 1200ms;will-change:transform,opacity}
+html.is-boarding .space__flash{animation:flash 700ms ease-out 2620ms both}
+@keyframes flash{0%{opacity:0;transform:scale(0.2)}35%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
 html.is-arriving .gate{opacity:0;transition:opacity 560ms ease}
 html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
 @keyframes settle{from{transform:scale(1.05)}to{transform:none}}
@@ -294,8 +311,8 @@ html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
 
 /* ---------- the gate on an upright screen: question in the sky, buttons at the thumb ---------- */
 @media (max-aspect-ratio:1/1){
-  .gate__scene img{object-position:50% 46%}
-  .gate__ramp img{object-position:50% 42%}
+  .space{--ax:50vw;--ay:61vh;--ah:30vh;--sw:150vw;--hy:24vh}
+  .space__beam{left:calc(var(--ax) - 32vw);width:64vw}
   .gate__shade{background:
     linear-gradient(to bottom,rgba(4,7,12,0.82) 0%,rgba(4,7,12,0.46) 28%,rgba(4,7,12,0) 42%),
     linear-gradient(to top,rgba(4,7,12,0.92) 0%,rgba(4,7,12,0.62) 18%,rgba(4,7,12,0) 36%)}
@@ -312,13 +329,12 @@ html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
   .gate__legal{max-width:none;font-size:0.9375rem}
 }
 @media (min-aspect-ratio:1/1) and (max-aspect-ratio:3/2){
-  .gate__scene img{object-position:35% 50%}
   .gate__panel{width:clamp(18rem,28vw,24rem)}
 }
 /* a very short window (a docked browser, a small laptop pane): the gate's text scrolls over a fixed picture */
 @media (min-aspect-ratio:1/1) and (max-height:560px){
   .gate{overflow-y:auto;overscroll-behavior:contain}
-  .gate__scene,.gate__ramp,.gate__shade{position:fixed}
+  .space,.gate__shade{position:fixed}
   .gate__panel{position:relative;left:auto;top:auto;transform:none;margin:1.25rem 0 1.25rem max(var(--margin),5.5vw)}
 }
 @media (min-aspect-ratio:1/1) and (max-height:640px){
@@ -375,9 +391,8 @@ html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
 }
 
 html.motion-off *,html.motion-off *::before,html.motion-off *::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;transition-delay:0ms !important}
-html.motion-off.is-boarding .gate__scene,html.motion-off.is-boarding .gate__ramp,html.motion-off .room.is-leaving .room__stage{transform:none}
+html.motion-off .room.is-leaving .room__stage{transform:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;transition-delay:0ms !important}
-  html.is-boarding .gate__scene,html.is-boarding .gate__ramp{transform:none}
   .room.is-leaving .room__stage{transform:none}
 }
