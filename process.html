@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Flash Frozen Cured Works | Space Weed</title>
+<meta name="description" content="Flower is frozen within an hour of harvest, then dried under vacuum until over 80% of its water is gone. The patented process, step by step. 21+.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080C14">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
+<link rel="canonical" href="https://workflo17.github.io/spaceweed-site/process.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How Flash Frozen Cured Works | Space Weed">
+<meta property="og:description" content="Flower is frozen within an hour of harvest, then dried under vacuum until over 80% of its water is gone. The patented process, step by step. 21+.">
+<meta property="og:image" content="https://workflo17.github.io/spaceweed-site/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/archivo.v2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/chamber-800.webp" imagesrcset="assets/img/chamber-560.webp 560w, assets/img/chamber-800.webp 800w, assets/img/chamber-1600.webp 1600w" imagesizes="(max-width: 700px) 60vw, 100vw" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/shell-engine-tall-900.webp" media="(max-aspect-ratio: 1/1)" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/shell-engine-1280.webp" media="(min-aspect-ratio: 1/1) and (max-width: 1280px)" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/shell-engine-1920.webp" media="(min-aspect-ratio: 1/1) and (min-width: 1281px)" type="image/webp" fetchpriority="high">
+<link rel="expect" href="#vt-ready" blocking="render">
+<link rel="stylesheet" href="assets/site.v1.css">
+<link rel="stylesheet" href="assets/ship.v1.css">
+<link rel="stylesheet" href="assets/line.v1.css"><link rel="stylesheet" href="assets/run-auto.v1.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script src="assets/boot.v1.js"></script>
+</head>
+<body class="page-process">
+
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+<div class="hud" aria-hidden="true"><span class="hud__c hud__c--tl"></span><span class="hud__c hud__c--tr"></span><span class="hud__c hud__c--bl"></span><span class="hud__c hud__c--br"></span></div>
+<div class="airlock" aria-hidden="true"><i class="airlock__l"><span class="airlock__frost"></span><span class="airlock__tag">Airlock · cycling</span></i><i class="airlock__r"><span class="airlock__frost"></span><span class="airlock__tag">21+</span></i></div>
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" aria-describedby="gate-legal">
+  <div class="gate__scrim" aria-hidden="true"></div>
+  <div class="gate__beam" aria-hidden="true"></div>
+  <div class="gate__panel">
+    <span class="plate__c"></span>
+    <p class="tag tag--ice gate__hail">Incoming hail · <span translate="no">Space&nbsp;Weed</span></p>
+    <picture><source type="image/webp" srcset="assets/img/wordmark-white-300.webp 300w, assets/img/wordmark-white-600.webp 600w" sizes="144px"><img class="gate__mark" src="assets/img/wordmark-white-300.png" alt="Space Weed" width="600" height="370"></picture>
+    <p class="gate__invite">Permission to come aboard? This ship carries adults only.</p>
+    <h2 class="gate__q" id="gate-q">Have you existed on this Earth for 21+ years?</h2>
+    <div class="gate__buttons">
+      <button class="button" type="button" data-gate="yes"><span class="button__in">Yes, I’m 21&nbsp;or older</span></button>
+      <button class="button button--quiet" type="button" data-gate="no"><span class="button__in">No</span></button>
+    </div>
+    <p class="gate__legal" id="gate-legal">For use only by adults 21&nbsp;years of age and older. Keep out of reach of children.</p>
+    <div class="gate__denied" hidden>
+      <p>You must be 21&nbsp;or older to visit this site.</p>
+      <button class="textlink gate__back" type="button" data-gate="back">Back to the question</button>
+    </div>
+  </div>
+  <p class="gate__status" aria-hidden="true"><span class="gate__led"></span><span data-gate-status>Transporter · standing by</span></p>
+</div>
+
+<div class="deck" aria-hidden="true">
+  <span class="deck__item deck__item--name"><span translate="no">Space&nbsp;Weed</span> · <span id="deck-name">Engine room</span></span>
+  <span class="deck__item deck__item--where">Deck <span id="deck-where">01</span></span>
+  <span class="deck__item">Voyage <span class="deck__num" id="deck-voyage">00</span>%</span>
+  <span class="deck__item deck__item--stage">Stage <span id="deck-stage">—</span></span>
+  <span class="deck__item deck__item--utc">UTC <span id="deck-utc">--:--</span></span>
+  <span class="deck__item deck__item--age">21+</span>
+  <span class="deck__led"></span>
+</div>
+<header class="hdr">
+<div class="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <a class="mark" href="index.html"><picture><source type="image/webp" srcset="assets/img/wordmark-white-300.webp 300w, assets/img/wordmark-white-600.webp 600w" sizes="78px"><img src="assets/img/wordmark-white-300.png" width="600" height="370" alt="Space Weed, home"></picture></a>
+  <nav class="links" id="nav" popover aria-label="Main">
+    <button class="menu-close" type="button" commandfor="nav" command="hide-popover">Close</button>
+    <a href="process.html" aria-current="page">Learn</a>
+    <a href="products.html" >Products</a>
+    <a href="partner.html" >Partner</a>
+    <a href="blog.html" >Blog</a>
+    <a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a>
+    <button class="motion-btn js-only" type="button" aria-pressed="true">Motion: on</button>
+  </nav>
+  <div class="top__right">
+    <span class="top__age" aria-hidden="true">21+</span>
+    <button class="motion-btn js-only" type="button" aria-pressed="true">Motion: on</button>
+    <a class="button button--quiet top__action" href="find.html" ><span class="button__in">Where to find it</span></a>
+    <button class="menu-btn" type="button" commandfor="nav" command="toggle-popover" aria-controls="nav" aria-expanded="false">Menu</button>
+  </div>
+</div>
+</header>
+<div class="reticle" aria-hidden="true"></div>
+<nav class="scope" id="scope" aria-label="Page map"></nav>
+
+<main id="main" tabindex="-1">
+<noscript><p class="age wrap noscript-age">This site is for adults 21&nbsp;years of age and older. Keep out of reach of children.</p></noscript>
+<div class="hold" aria-hidden="true">
+  <picture><source type="image/webp" srcset="assets/img/chamber-560.webp 560w, assets/img/chamber-800.webp 800w, assets/img/chamber-1600.webp 1600w" sizes="(max-width: 700px) 60vw, 100vw"><img src="assets/img/chamber-1600.jpg" srcset="assets/img/chamber-560.jpg 560w, assets/img/chamber-800.jpg 800w, assets/img/chamber-1600.jpg 1600w" sizes="(max-width: 700px) 60vw, 100vw" width="1600" height="1200" alt="" fetchpriority="high" decoding="async"></picture>
+  <i class="shell shell--engine"></i>
+</div>
+<section class="page-hatch grid how how--first" aria-labelledby="intro-title">
+  <p class="tag tag--ice how__tag" data-type>What is Flash&nbsp;Frozen&nbsp;Cured?</p>
+  <h1 class="head how__head" id="intro-title">Ice to vapour, never liquid.</h1>
+  <div class="how__lede">
+    <p class="lead">Flash&nbsp;Frozen&nbsp;Curing is a patented scientific method whereby fresh cannabis is flash frozen and then dried under vacuum using temperature, time, and pressure. No solvents or chemicals are ever used.</p>
+    <p class="age">For adults 21+.</p>
+  </div>
+</section>
+<!-- Client note 6 (10 Nov): the five talking points from the old site, in their cleared wording (Page Wording, Oct).
+     Smoother and Lower moisture still wait on Eric's yes (question E1): titles only, marked, until he answers. -->
+<section class="talk5" aria-labelledby="talk5-title">
+  <h2 class="talk5__head" id="talk5-title">What’s different</h2>
+  <ol class="talk5__list">
+    <li class="talk5__item"><span class="talk5__n">01</span><h3>Fresher</h3><p>Frozen within an hour of harvest, so the buds keep their size, shape and color.</p></li>
+    <li class="talk5__item"><span class="talk5__n">02</span><h3>Softer</h3><p>Our first customers compared the texture to astronaut ice cream. It breaks up by hand, no grinder needed.</p></li>
+    <li class="talk5__item"><span class="talk5__n">03</span><h3>More in the jar</h3><p>Over 80% of the water comes out, so a gram fills the jar like two.</p></li>
+    <li class="talk5__item is-held"><span class="talk5__n">04</span><h3>Smoother</h3><span class="talk5__held">Awaiting confirmation</span></li>
+    <li class="talk5__item is-held"><span class="talk5__n">05</span><h3>Lower moisture</h3><span class="talk5__held">Awaiting confirmation</span></li>
+  </ol>
+</section>
+<i id="vt-ready" hidden></i>
+
+<!-- THE TOUR: the process as a walk along a factory gangway past four windows, the flower riding the conveyor from room to
+     room behind the glass. On the walk the scene pins and the scroll is the visitor’s feet; still, it is the long view down
+     the gangway with the four stage lines under it. -->
+<section class="run is-auto" data-run data-bulkhead="none" data-stations="Harvest,Freezer,Vacuum,Jar" aria-labelledby="stations-title">
+  <h2 class="sr" id="stations-title">The four stations</h2>
+  <div class="run__track">
+    <i class="run__stop"></i><i class="run__stop"></i><i class="run__stop"></i><i class="run__stop"></i>
+    <div class="run__stage">
+      <figure class="gangway" aria-hidden="true" data-line>
+  <div class="gangway__view">
+    <div class="gangway__world">
+      <i class="gangway__floor"></i><i class="gangway__ceil"></i><i class="gangway__far"></i><i class="gangway__end"></i><i class="gangway__lead"></i>
+      <i class="gangway__part gangway__part--1"></i><i class="gangway__part gangway__part--2"></i><i class="gangway__part gangway__part--3"></i>
+      <div class="gangway__bay gangway__bay--1">
+        <img class="gangway__room" src="assets/img/inside-harvest2-1280.webp" srcset="assets/img/inside-harvest2-800.webp 800w, assets/img/inside-harvest2-1280.webp 1280w" sizes="(max-width: 700px) 800px, 1280px" width="1280" height="714" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__side"></i>
+        <i class="gangway__dim"></i>
+        <div class="gangway__load"><i class="gangway__shadow"></i><img class="gangway__bud" src="assets/img/bud-macro-cut-600.webp" width="600" height="600" alt="" loading="lazy" fetchpriority="low" decoding="async"><img class="gangway__coat" src="assets/img/bud-dew-480.webp" width="480" height="480" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+        <img class="gangway__wall" src="assets/img/bay-harvest-1920.webp" srcset="assets/img/bay-harvest-800.webp 800w, assets/img/bay-harvest-1920.webp 1920w" sizes="(max-width: 700px) 800px, 1920px" width="1920" height="1072" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__glass"></i>
+        <p class="gangway__name"><b>Station 01</b><span>Harvest</span><em>Water · liquid</em></p>
+        <i class="gangway__spill"></i>
+      </div>
+      <div class="gangway__bay gangway__bay--2">
+        <img class="gangway__room" src="assets/img/inside-freezer2-1280.webp" srcset="assets/img/inside-freezer2-800.webp 800w, assets/img/inside-freezer2-1280.webp 1280w" sizes="(max-width: 700px) 800px, 1280px" width="1280" height="714" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__side"></i>
+        <i class="gangway__dim"></i>
+        <div class="gangway__load"><i class="gangway__shadow"></i><img class="gangway__bud" src="assets/img/bud-macro-cut-600.webp" width="600" height="600" alt="" loading="lazy" fetchpriority="low" decoding="async"><img class="gangway__coat" src="assets/img/bud-rime-480.webp" width="480" height="480" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+        <img class="gangway__wall" src="assets/img/bay-freezer-1920.webp" srcset="assets/img/bay-freezer-800.webp 800w, assets/img/bay-freezer-1920.webp 1920w" sizes="(max-width: 700px) 800px, 1920px" width="1920" height="1072" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__glass"><i class="gangway__frost"></i></i>
+        <p class="gangway__name"><b>Station 02</b><span>Freezer</span><em>Water · ice</em></p>
+        <i class="gangway__spill"></i>
+      </div>
+      <div class="gangway__bay gangway__bay--3">
+        <img class="gangway__room" src="assets/img/inside-vacuum-1280.webp" srcset="assets/img/inside-vacuum-800.webp 800w, assets/img/inside-vacuum-1280.webp 1280w" sizes="(max-width: 700px) 800px, 1280px" width="1280" height="714" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__side"></i>
+        <i class="gangway__dim"></i>
+        <div class="gangway__load"><i class="gangway__shadow"></i><img class="gangway__bud" src="assets/img/bud-macro-cut-600.webp" width="600" height="600" alt="" loading="lazy" fetchpriority="low" decoding="async"><img class="gangway__coat" src="assets/img/bud-rime-480.webp" width="480" height="480" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+        <i class="gangway__vap"></i><i class="gangway__vap"></i><i class="gangway__vap"></i><i class="gangway__vap"></i>
+        <img class="gangway__wall" src="assets/img/bay-vacuum-1920.webp" srcset="assets/img/bay-vacuum-800.webp 800w, assets/img/bay-vacuum-1920.webp 1920w" sizes="(max-width: 700px) 800px, 1920px" width="1920" height="1072" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__glass"></i>
+        <p class="gangway__call"><b>No liquid</b><b>Pulled away</b></p>
+        <p class="gangway__name"><b>Station 03</b><span>Vacuum</span><em>Water · leaving as vapour</em></p>
+        <i class="gangway__spill"></i>
+      </div>
+      <div class="gangway__bay gangway__bay--4">
+        <img class="gangway__room" src="assets/img/inside-jar2-1280.webp" srcset="assets/img/inside-jar2-800.webp 800w, assets/img/inside-jar2-1280.webp 1280w" sizes="(max-width: 700px) 800px, 1280px" width="1280" height="714" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__side"></i>
+        <i class="gangway__dim"></i>
+        <div class="gangway__jars"><picture><source type="image/webp" srcset="assets/img/same-weight-jars-800.webp"><img src="assets/img/same-weight-jars-800.jpg" width="800" height="800" alt="" loading="lazy" fetchpriority="low" decoding="async"></picture><i class="gangway__lvl"><b>fills the jar like two</b></i></div>
+        <div class="gangway__load"><i class="gangway__shadow"></i><img class="gangway__bud" src="assets/img/bud-macro-cut-600.webp" width="600" height="600" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+        <img class="gangway__wall" src="assets/img/bay-jar-1920.webp" srcset="assets/img/bay-jar-800.webp 800w, assets/img/bay-jar-1920.webp 1920w" sizes="(max-width: 700px) 800px, 1920px" width="1920" height="1072" alt="" loading="lazy" fetchpriority="low" decoding="async">
+        <i class="gangway__glass"></i>
+        <p class="gangway__name"><b>Station 04</b><span>Jar</span><em>Water · over 80% gone</em></p>
+        <i class="gangway__spill"></i>
+      </div>
+      <i class="gangway__rail"></i>
+    </div>
+  </div>
+  <p class="gangway__tag tag">The tour · four windows on the line</p>
+  <p class="gangway__hud tag" data-hud></p>
+</figure>
+      <div class="run__cap">
+        <ol class="how__stages run__stages" data-stages>
+          <li class="stage is-on">
+            <h3 class="sub stage__title" data-n="01">Harvest</h3>
+            <p>The plant is harvested and the flower is taken off the stem.</p>
+          </li>
+          <li class="stage">
+            <h3 class="sub stage__title" data-n="02">Freezer</h3>
+            <p>Frozen within an hour of harvest. It waits as ice until it is dried.</p>
+          </li>
+          <li class="stage">
+            <h3 class="sub stage__title" data-n="03">Vacuum</h3>
+            <p>In the chamber the frozen water goes straight from ice to vapour and is pulled away. It never melts.</p>
+          </li>
+          <li class="stage">
+            <h3 class="sub stage__title" data-n="04">Jar</h3>
+            <p>Over 80% of the water is gone. With the water’s weight out of it, a gram fills the jar like two, and the bud breaks up by hand.</p>
+          </li>
+        </ol>
+        <div class="run__aside">
+          <div class="rail" role="group" aria-label="Jump to a station" data-rail></div>
+          <a class="textlink run__skip" href="#method-title">Skip to the diagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bulkhead" aria-hidden="true"><span class="bulkhead__n">Deck 03</span><span class="bulkhead__rule"></span><span class="bulkhead__name">The method</span></div>
+<section class="grid section how how--method" aria-labelledby="method-title">
+  <div class="how__statement">
+    <p class="tag" data-type>The method</p>
+    <h2 class="head" id="method-title">Follow the water.</h2>
+    <p class="statement">In a vacuum, ice skips melting and goes straight to vapour.</p>
+    <p>Below the triple point of water, <span translate="no">611.657&nbsp;pascals</span>, ice cannot melt. It can only leave as vapour, and that is how over 80% of the water leaves the flower.</p>
+  </div>
+  <figure class="how__figure plate">
+    <span class="plate__c"></span>
+    <p class="tag" data-type>Instrument: water’s phase diagram</p>
+    <svg class="phase" viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="phase-title phase-desc">
+<title id="phase-title">Phase diagram of water with the path the flower takes</title>
+<desc id="phase-desc">Pressure on a logarithmic axis against temperature. Three regions: ice, liquid water and vapour, meeting at the triple point at 0.01 degrees Celsius and 611.657 pascals. The flower is cooled at atmospheric pressure into the ice region, the pressure is lowered below the triple point, and as it warms the path crosses from ice straight into vapour without passing through liquid.</desc>
+<path class="phase__region phase__region--vapour" d="M150.0,550.0 L150.0,547.2 L152.5,544.9 L155.0,542.5 L157.5,540.1 L160.0,537.8 L162.5,535.5 L165.0,533.2 L167.5,530.8 L170.1,528.6 L172.6,526.3 L175.1,524.0 L177.6,521.7 L180.1,519.5 L182.6,517.2 L185.1,515.0 L187.6,512.8 L190.1,510.5 L192.6,508.3 L195.1,506.1 L197.6,504.0 L200.1,501.8 L202.6,499.6 L205.1,497.5 L207.6,495.3 L210.2,493.2 L212.7,491.0 L215.2,488.9 L217.7,486.8 L220.2,484.7 L222.7,482.6 L225.2,480.5 L227.7,478.5 L230.2,476.4 L232.7,474.3 L235.2,472.3 L237.7,470.3 L240.2,468.2 L242.7,466.2 L245.2,464.2 L247.7,462.2 L250.2,460.2 L252.8,458.2 L255.3,456.2 L257.8,454.3 L260.3,452.3 L262.8,450.3 L265.3,448.4 L267.8,446.5 L270.3,444.5 L272.8,442.6 L275.3,440.7 L277.8,438.8 L280.3,436.9 L282.8,435.0 L285.3,433.1 L287.8,431.3 L290.4,429.4 L292.9,427.6 L295.4,425.7 L297.9,423.9 L300.4,422.0 L302.9,420.2 L305.4,418.4 L307.9,416.6 L310.4,414.8 L312.9,413.0 L315.4,411.2 L317.9,409.4 L320.4,407.6 L322.9,405.9 L325.4,404.1 L327.9,402.3 L330.5,400.6 L333.0,398.9 L335.5,397.1 L338.0,395.4 L340.5,393.7 L343.0,392.0 L345.5,390.3 L348.0,388.6 L350.5,386.9 L353.0,385.2 L355.5,383.5 L358.0,381.8 L360.5,380.2 L363.0,378.5 L365.5,376.9 L368.0,375.2 L370.6,373.6 L373.1,371.9 L375.6,370.3 L378.1,368.7 L380.6,367.1 L383.1,365.5 L385.6,363.9 L388.1,362.3 L390.6,360.7 L393.1,359.1 L395.6,357.5 L398.1,356.0 L400.6,354.4 L403.1,352.8 L405.6,351.3 L408.1,349.7 L410.7,348.2 L413.2,346.7 L415.7,345.1 L418.2,343.6 L420.7,342.1 L423.2,340.6 L425.7,339.1 L428.2,337.6 L430.7,336.1 L433.2,334.6 L435.7,333.1 L438.2,331.6 L440.7,330.2 L443.2,328.7 L445.7,327.2 L448.2,325.8 L450.8,324.3 L450.8,324.3 L450.8,324.3 L453.3,323.0 L455.8,321.8 L458.3,320.5 L460.8,319.2 L463.3,318.0 L465.8,316.7 L468.3,315.5 L470.8,314.3 L473.3,313.0 L475.8,311.8 L478.3,310.6 L480.8,309.3 L483.3,308.1 L485.8,306.9 L488.3,305.7 L490.8,304.5 L493.4,303.3 L495.9,302.1 L498.4,300.9 L500.9,299.8 L503.4,298.6 L505.9,297.4 L508.4,296.3 L510.9,295.1 L513.4,293.9 L515.9,292.8 L518.4,291.6 L520.9,290.5 L523.4,289.3 L525.9,288.2 L528.4,287.1 L531.0,286.0 L533.5,284.8 L536.0,283.7 L538.5,282.6 L541.0,281.5 L543.5,280.4 L546.0,279.3 L548.5,278.2 L551.0,277.1 L553.5,276.0 L556.0,274.9 L558.5,273.9 L561.0,272.8 L563.5,271.7 L566.0,270.6 L568.5,269.6 L571.0,268.5 L573.6,267.5 L576.1,266.4 L578.6,265.4 L581.1,264.3 L583.6,263.3 L586.1,262.3 L588.6,261.2 L591.1,260.2 L593.6,259.2 L596.1,258.2 L598.6,257.1 L601.1,256.1 L603.6,255.1 L606.1,254.1 L608.6,253.1 L611.1,252.1 L613.7,251.1 L616.2,250.1 L618.7,249.2 L621.2,248.2 L623.7,247.2 L626.2,246.2 L628.7,245.2 L631.2,244.3 L633.7,243.3 L636.2,242.4 L638.7,241.4 L641.2,240.4 L643.7,239.5 L646.2,238.5 L648.7,237.6 L651.2,236.7 L653.8,235.7 L656.3,234.8 L658.8,233.9 L661.3,232.9 L663.8,232.0 L666.3,231.1 L668.8,230.2 L671.3,229.3 L673.8,228.4 L676.3,227.5 L678.8,226.6 L681.3,225.7 L683.8,224.8 L686.3,223.9 L688.8,223.0 L691.4,222.1 L693.9,221.2 L696.4,220.3 L698.9,219.4 L701.4,218.6 L703.9,217.7 L706.4,216.8 L708.9,216.0 L711.4,215.1 L713.9,214.2 L716.4,213.4 L718.9,212.5 L721.4,211.7 L723.9,210.8 L726.4,210.0 L728.9,209.1 L731.4,208.3 L734.0,207.5 L736.5,206.6 L739.0,205.8 L741.5,205.0 L744.0,204.2 L746.5,203.3 L749.0,202.5 L751.5,201.7 L754.0,200.9 L756.5,200.1 L759.0,199.3 L761.5,198.5 L764.0,197.7 L766.5,196.9 L769.0,196.1 L771.6,195.3 L774.1,194.5 L776.6,193.7 L779.1,192.9 L781.6,192.1 L784.1,191.3 L786.6,190.6 L789.1,189.8 L791.6,189.0 L794.1,188.2 L796.6,187.5 L799.1,186.7 L801.6,185.9 L804.1,185.2 L806.6,184.4 L809.1,183.7 L811.6,182.9 L814.2,182.2 L816.7,181.4 L819.2,180.7 L821.7,179.9 L824.2,179.2 L826.7,178.4 L829.2,177.7 L831.7,177.0 L834.2,176.2 L836.7,175.5 L839.2,174.8 L841.7,174.1 L844.2,173.3 L846.7,172.6 L849.2,171.9 L851.8,171.2 L854.3,170.5 L856.8,169.8 L859.3,169.0 L861.8,168.3 L864.3,167.6 L866.8,166.9 L869.3,166.2 L871.8,165.5 L874.3,164.8 L876.8,164.1 L879.3,163.4 L881.8,162.8 L884.3,162.1 L886.8,161.4 L889.3,160.7 L891.9,160.0 L894.4,159.3 L896.9,158.7 L899.4,158.0 L901.9,157.3 L904.4,156.7 L906.9,156.0 L909.4,155.3 L911.9,154.7 L914.4,154.0 L916.9,153.3 L919.4,152.7 L921.9,152.0 L924.4,151.4 L926.9,150.7 L929.4,150.1 L931.9,149.4 L934.5,148.8 L937.0,148.1 L939.5,147.5 L942.0,146.8 L944.5,146.2 L947.0,145.6 L949.5,144.9 L952.0,144.3 L952.0,144.3 L952.0,550.0 Z"/>
+<path class="phase__region phase__region--ice" d="M150.0,64.0 L450.4,64.0 L450.8,324.3 L450.8,324.3 L450.8,324.3 L448.2,325.8 L445.7,327.2 L443.2,328.7 L440.7,330.2 L438.2,331.6 L435.7,333.1 L433.2,334.6 L430.7,336.1 L428.2,337.6 L425.7,339.1 L423.2,340.6 L420.7,342.1 L418.2,343.6 L415.7,345.1 L413.2,346.7 L410.7,348.2 L408.1,349.7 L405.6,351.3 L403.1,352.8 L400.6,354.4 L398.1,356.0 L395.6,357.5 L393.1,359.1 L390.6,360.7 L388.1,362.3 L385.6,363.9 L383.1,365.5 L380.6,367.1 L378.1,368.7 L375.6,370.3 L373.1,371.9 L370.6,373.6 L368.0,375.2 L365.5,376.9 L363.0,378.5 L360.5,380.2 L358.0,381.8 L355.5,383.5 L353.0,385.2 L350.5,386.9 L348.0,388.6 L345.5,390.3 L343.0,392.0 L340.5,393.7 L338.0,395.4 L335.5,397.1 L333.0,398.9 L330.5,400.6 L327.9,402.3 L325.4,404.1 L322.9,405.9 L320.4,407.6 L317.9,409.4 L315.4,411.2 L312.9,413.0 L310.4,414.8 L307.9,416.6 L305.4,418.4 L302.9,420.2 L300.4,422.0 L297.9,423.9 L295.4,425.7 L292.9,427.6 L290.4,429.4 L287.8,431.3 L285.3,433.1 L282.8,435.0 L280.3,436.9 L277.8,438.8 L275.3,440.7 L272.8,442.6 L270.3,444.5 L267.8,446.5 L265.3,448.4 L262.8,450.3 L260.3,452.3 L257.8,454.3 L255.3,456.2 L252.8,458.2 L250.2,460.2 L247.7,462.2 L245.2,464.2 L242.7,466.2 L240.2,468.2 L237.7,470.3 L235.2,472.3 L232.7,474.3 L230.2,476.4 L227.7,478.5 L225.2,480.5 L222.7,482.6 L220.2,484.7 L217.7,486.8 L215.2,488.9 L212.7,491.0 L210.2,493.2 L207.6,495.3 L205.1,497.5 L202.6,499.6 L200.1,501.8 L197.6,504.0 L195.1,506.1 L192.6,508.3 L190.1,510.5 L187.6,512.8 L185.1,515.0 L182.6,517.2 L180.1,519.5 L177.6,521.7 L175.1,524.0 L172.6,526.3 L170.1,528.6 L167.5,530.8 L165.0,533.2 L162.5,535.5 L160.0,537.8 L157.5,540.1 L155.0,542.5 L152.5,544.9 L150.0,547.2 L150.0,550.0 Z"/>
+<path class="phase__region phase__region--liquid" d="M450.4,64.0 L952.0,64.0 L952.0,144.3 L952.0,144.3 L949.5,144.9 L947.0,145.6 L944.5,146.2 L942.0,146.8 L939.5,147.5 L937.0,148.1 L934.5,148.8 L931.9,149.4 L929.4,150.1 L926.9,150.7 L924.4,151.4 L921.9,152.0 L919.4,152.7 L916.9,153.3 L914.4,154.0 L911.9,154.7 L909.4,155.3 L906.9,156.0 L904.4,156.7 L901.9,157.3 L899.4,158.0 L896.9,158.7 L894.4,159.3 L891.9,160.0 L889.3,160.7 L886.8,161.4 L884.3,162.1 L881.8,162.8 L879.3,163.4 L876.8,164.1 L874.3,164.8 L871.8,165.5 L869.3,166.2 L866.8,166.9 L864.3,167.6 L861.8,168.3 L859.3,169.0 L856.8,169.8 L854.3,170.5 L851.8,171.2 L849.2,171.9 L846.7,172.6 L844.2,173.3 L841.7,174.1 L839.2,174.8 L836.7,175.5 L834.2,176.2 L831.7,177.0 L829.2,177.7 L826.7,178.4 L824.2,179.2 L821.7,179.9 L819.2,180.7 L816.7,181.4 L814.2,182.2 L811.6,182.9 L809.1,183.7 L806.6,184.4 L804.1,185.2 L801.6,185.9 L799.1,186.7 L796.6,187.5 L794.1,188.2 L791.6,189.0 L789.1,189.8 L786.6,190.6 L784.1,191.3 L781.6,192.1 L779.1,192.9 L776.6,193.7 L774.1,194.5 L771.6,195.3 L769.0,196.1 L766.5,196.9 L764.0,197.7 L761.5,198.5 L759.0,199.3 L756.5,200.1 L754.0,200.9 L751.5,201.7 L749.0,202.5 L746.5,203.3 L744.0,204.2 L741.5,205.0 L739.0,205.8 L736.5,206.6 L734.0,207.5 L731.4,208.3 L728.9,209.1 L726.4,210.0 L723.9,210.8 L721.4,211.7 L718.9,212.5 L716.4,213.4 L713.9,214.2 L711.4,215.1 L708.9,216.0 L706.4,216.8 L703.9,217.7 L701.4,218.6 L698.9,219.4 L696.4,220.3 L693.9,221.2 L691.4,222.1 L688.8,223.0 L686.3,223.9 L683.8,224.8 L681.3,225.7 L678.8,226.6 L676.3,227.5 L673.8,228.4 L671.3,229.3 L668.8,230.2 L666.3,231.1 L663.8,232.0 L661.3,232.9 L658.8,233.9 L656.3,234.8 L653.8,235.7 L651.2,236.7 L648.7,237.6 L646.2,238.5 L643.7,239.5 L641.2,240.4 L638.7,241.4 L636.2,242.4 L633.7,243.3 L631.2,244.3 L628.7,245.2 L626.2,246.2 L623.7,247.2 L621.2,248.2 L618.7,249.2 L616.2,250.1 L613.7,251.1 L611.1,252.1 L608.6,253.1 L606.1,254.1 L603.6,255.1 L601.1,256.1 L598.6,257.1 L596.1,258.2 L593.6,259.2 L591.1,260.2 L588.6,261.2 L586.1,262.3 L583.6,263.3 L581.1,264.3 L578.6,265.4 L576.1,266.4 L573.6,267.5 L571.0,268.5 L568.5,269.6 L566.0,270.6 L563.5,271.7 L561.0,272.8 L558.5,273.9 L556.0,274.9 L553.5,276.0 L551.0,277.1 L548.5,278.2 L546.0,279.3 L543.5,280.4 L541.0,281.5 L538.5,282.6 L536.0,283.7 L533.5,284.8 L531.0,286.0 L528.4,287.1 L525.9,288.2 L523.4,289.3 L520.9,290.5 L518.4,291.6 L515.9,292.8 L513.4,293.9 L510.9,295.1 L508.4,296.3 L505.9,297.4 L503.4,298.6 L500.9,299.8 L498.4,300.9 L495.9,302.1 L493.4,303.3 L490.8,304.5 L488.3,305.7 L485.8,306.9 L483.3,308.1 L480.8,309.3 L478.3,310.6 L475.8,311.8 L473.3,313.0 L470.8,314.3 L468.3,315.5 L465.8,316.7 L463.3,318.0 L460.8,319.2 L458.3,320.5 L455.8,321.8 L453.3,323.0 L450.8,324.3 Z"/>
+<path class="phase__frame" pathLength="1" d="M150.0,64.0 L952.0,64.0 L952.0,550.0 L150.0,550.0 Z"/>
+<path class="phase__bracket" pathLength="1" d="M150.0,86.0 L150.0,64.0 L172.0,64.0"/>
+<path class="phase__bracket" pathLength="1" d="M952.0,86.0 L952.0,64.0 L930.0,64.0"/>
+<path class="phase__bracket" pathLength="1" d="M150.0,528.0 L150.0,550.0 L172.0,550.0"/>
+<path class="phase__bracket" pathLength="1" d="M952.0,528.0 L952.0,550.0 L930.0,550.0"/>
+<path class="phase__curve phase__curve--sublimation" pathLength="1" d="M150.0,547.2 L152.5,544.9 L155.0,542.5 L157.5,540.1 L160.0,537.8 L162.5,535.5 L165.0,533.2 L167.5,530.8 L170.1,528.6 L172.6,526.3 L175.1,524.0 L177.6,521.7 L180.1,519.5 L182.6,517.2 L185.1,515.0 L187.6,512.8 L190.1,510.5 L192.6,508.3 L195.1,506.1 L197.6,504.0 L200.1,501.8 L202.6,499.6 L205.1,497.5 L207.6,495.3 L210.2,493.2 L212.7,491.0 L215.2,488.9 L217.7,486.8 L220.2,484.7 L222.7,482.6 L225.2,480.5 L227.7,478.5 L230.2,476.4 L232.7,474.3 L235.2,472.3 L237.7,470.3 L240.2,468.2 L242.7,466.2 L245.2,464.2 L247.7,462.2 L250.2,460.2 L252.8,458.2 L255.3,456.2 L257.8,454.3 L260.3,452.3 L262.8,450.3 L265.3,448.4 L267.8,446.5 L270.3,444.5 L272.8,442.6 L275.3,440.7 L277.8,438.8 L280.3,436.9 L282.8,435.0 L285.3,433.1 L287.8,431.3 L290.4,429.4 L292.9,427.6 L295.4,425.7 L297.9,423.9 L300.4,422.0 L302.9,420.2 L305.4,418.4 L307.9,416.6 L310.4,414.8 L312.9,413.0 L315.4,411.2 L317.9,409.4 L320.4,407.6 L322.9,405.9 L325.4,404.1 L327.9,402.3 L330.5,400.6 L333.0,398.9 L335.5,397.1 L338.0,395.4 L340.5,393.7 L343.0,392.0 L345.5,390.3 L348.0,388.6 L350.5,386.9 L353.0,385.2 L355.5,383.5 L358.0,381.8 L360.5,380.2 L363.0,378.5 L365.5,376.9 L368.0,375.2 L370.6,373.6 L373.1,371.9 L375.6,370.3 L378.1,368.7 L380.6,367.1 L383.1,365.5 L385.6,363.9 L388.1,362.3 L390.6,360.7 L393.1,359.1 L395.6,357.5 L398.1,356.0 L400.6,354.4 L403.1,352.8 L405.6,351.3 L408.1,349.7 L410.7,348.2 L413.2,346.7 L415.7,345.1 L418.2,343.6 L420.7,342.1 L423.2,340.6 L425.7,339.1 L428.2,337.6 L430.7,336.1 L433.2,334.6 L435.7,333.1 L438.2,331.6 L440.7,330.2 L443.2,328.7 L445.7,327.2 L448.2,325.8 L450.8,324.3 L450.8,324.3"/>
+<path class="phase__curve phase__curve--vaporisation" pathLength="1" d="M450.8,324.3 L453.3,323.0 L455.8,321.8 L458.3,320.5 L460.8,319.2 L463.3,318.0 L465.8,316.7 L468.3,315.5 L470.8,314.3 L473.3,313.0 L475.8,311.8 L478.3,310.6 L480.8,309.3 L483.3,308.1 L485.8,306.9 L488.3,305.7 L490.8,304.5 L493.4,303.3 L495.9,302.1 L498.4,300.9 L500.9,299.8 L503.4,298.6 L505.9,297.4 L508.4,296.3 L510.9,295.1 L513.4,293.9 L515.9,292.8 L518.4,291.6 L520.9,290.5 L523.4,289.3 L525.9,288.2 L528.4,287.1 L531.0,286.0 L533.5,284.8 L536.0,283.7 L538.5,282.6 L541.0,281.5 L543.5,280.4 L546.0,279.3 L548.5,278.2 L551.0,277.1 L553.5,276.0 L556.0,274.9 L558.5,273.9 L561.0,272.8 L563.5,271.7 L566.0,270.6 L568.5,269.6 L571.0,268.5 L573.6,267.5 L576.1,266.4 L578.6,265.4 L581.1,264.3 L583.6,263.3 L586.1,262.3 L588.6,261.2 L591.1,260.2 L593.6,259.2 L596.1,258.2 L598.6,257.1 L601.1,256.1 L603.6,255.1 L606.1,254.1 L608.6,253.1 L611.1,252.1 L613.7,251.1 L616.2,250.1 L618.7,249.2 L621.2,248.2 L623.7,247.2 L626.2,246.2 L628.7,245.2 L631.2,244.3 L633.7,243.3 L636.2,242.4 L638.7,241.4 L641.2,240.4 L643.7,239.5 L646.2,238.5 L648.7,237.6 L651.2,236.7 L653.8,235.7 L656.3,234.8 L658.8,233.9 L661.3,232.9 L663.8,232.0 L666.3,231.1 L668.8,230.2 L671.3,229.3 L673.8,228.4 L676.3,227.5 L678.8,226.6 L681.3,225.7 L683.8,224.8 L686.3,223.9 L688.8,223.0 L691.4,222.1 L693.9,221.2 L696.4,220.3 L698.9,219.4 L701.4,218.6 L703.9,217.7 L706.4,216.8 L708.9,216.0 L711.4,215.1 L713.9,214.2 L716.4,213.4 L718.9,212.5 L721.4,211.7 L723.9,210.8 L726.4,210.0 L728.9,209.1 L731.4,208.3 L734.0,207.5 L736.5,206.6 L739.0,205.8 L741.5,205.0 L744.0,204.2 L746.5,203.3 L749.0,202.5 L751.5,201.7 L754.0,200.9 L756.5,200.1 L759.0,199.3 L761.5,198.5 L764.0,197.7 L766.5,196.9 L769.0,196.1 L771.6,195.3 L774.1,194.5 L776.6,193.7 L779.1,192.9 L781.6,192.1 L784.1,191.3 L786.6,190.6 L789.1,189.8 L791.6,189.0 L794.1,188.2 L796.6,187.5 L799.1,186.7 L801.6,185.9 L804.1,185.2 L806.6,184.4 L809.1,183.7 L811.6,182.9 L814.2,182.2 L816.7,181.4 L819.2,180.7 L821.7,179.9 L824.2,179.2 L826.7,178.4 L829.2,177.7 L831.7,177.0 L834.2,176.2 L836.7,175.5 L839.2,174.8 L841.7,174.1 L844.2,173.3 L846.7,172.6 L849.2,171.9 L851.8,171.2 L854.3,170.5 L856.8,169.8 L859.3,169.0 L861.8,168.3 L864.3,167.6 L866.8,166.9 L869.3,166.2 L871.8,165.5 L874.3,164.8 L876.8,164.1 L879.3,163.4 L881.8,162.8 L884.3,162.1 L886.8,161.4 L889.3,160.7 L891.9,160.0 L894.4,159.3 L896.9,158.7 L899.4,158.0 L901.9,157.3 L904.4,156.7 L906.9,156.0 L909.4,155.3 L911.9,154.7 L914.4,154.0 L916.9,153.3 L919.4,152.7 L921.9,152.0 L924.4,151.4 L926.9,150.7 L929.4,150.1 L931.9,149.4 L934.5,148.8 L937.0,148.1 L939.5,147.5 L942.0,146.8 L944.5,146.2 L947.0,145.6 L949.5,144.9 L952.0,144.3"/>
+<path class="phase__curve phase__curve--melting" pathLength="1" d="M450.8,324.3 L450.8,190.1 L450.8,166.1 L450.8,152.0 L450.8,141.9 L450.8,134.1 L450.7,127.7 L450.7,122.3 L450.7,117.7 L450.7,113.5 L450.7,109.8 L450.7,106.5 L450.7,103.4 L450.7,100.6 L450.7,98.0 L450.6,95.6 L450.6,93.3 L450.6,91.2 L450.6,89.2 L450.6,87.3 L450.6,85.5 L450.6,83.8 L450.6,82.2 L450.6,80.6 L450.6,79.1 L450.5,77.7 L450.5,76.3 L450.5,75.0 L450.5,73.7 L450.5,72.5 L450.5,71.3 L450.5,70.1 L450.5,69.0 L450.5,67.9 L450.5,66.9 L450.4,65.9 L450.4,64.9"/>
+<path class="phase__ref" d="M150.0,144.5 L952.0,144.5"/>
+<text class="phase__ref-label phase__label--wide" x="946.0" y="132.5" text-anchor="end">1 atm</text>
+<text class="phase__ref-label phase__label--narrow" x="160.0" y="128.5">1 atm</text>
+<path class="phase__path" id="phase-route" pathLength="1" d="M551.0,144.5 L275.3,144.5 L275.3,430.4 L551.0,430.4"/>
+<text class="phase__ref-label phase__label--wide" x="569.0" y="184.5">illustrative path</text>
+<text class="phase__ref-label phase__label--narrow phase__label--halo" x="470.8" y="196.5">illustrative path</text>
+<circle class="phase__stop" data-stop="0" cx="551.0" cy="144.5" r="7"/>
+<circle class="phase__stop" data-stop="1" cx="275.3" cy="144.5" r="7"/>
+<circle class="phase__stop" data-stop="2" cx="275.3" cy="430.4" r="7"/>
+<circle class="phase__stop" data-stop="3" cx="551.0" cy="430.4" r="7"/>
+<circle class="phase__cross" cx="289.1" cy="430.4" r="9"/>
+<circle class="phase__halo" id="phase-halo" cx="551.0" cy="144.5" r="13"/>
+<circle class="phase__you" id="phase-you" cx="551.0" cy="144.5" r="13"/>
+<circle class="phase__triple" cx="450.8" cy="324.3" r="6"/>
+<text class="phase__label phase__label--wide" x="462.8" y="346.3">triple point, 0.01 °C and 611.657 Pa</text>
+<text class="phase__label phase__label--narrow" x="462.8" y="350.3">triple point</text>
+<text class="phase__region-label phase__region-label--ice" x="190.1" y="209.8">ice</text>
+<text class="phase__region-label" x="601.1" y="94.8">liquid water</text>
+<text class="phase__region-label" x="781.6" y="509.5">vapour</text>
+<text class="phase__label phase__label--wide" x="340.5" y="130.5" text-anchor="middle">cooled at 1 atm</text>
+<text class="phase__label phase__label--wide" x="289.3" y="270.5">pressure</text>
+<text class="phase__label phase__label--wide" x="289.3" y="298.9">drops</text>
+<text class="phase__label phase__label--wide" x="303.1" y="468.4">ice leaves as vapour</text>
+<text class="phase__ref-label phase__label--narrow" x="313.1" y="484.4">ice leaves as vapour</text>
+<rect class="phase__tick" x="248.8" y="550.0" width="3" height="7"/>
+<text class="phase__axis" x="250.2" y="596.0" text-anchor="middle">−40 °C</text>
+<rect class="phase__tick" x="449.2" y="550.0" width="3" height="7"/>
+<text class="phase__axis" x="450.8" y="596.0" text-anchor="middle">0 °C</text>
+<rect class="phase__tick" x="649.8" y="550.0" width="3" height="7"/>
+<text class="phase__axis" x="651.2" y="596.0" text-anchor="middle">40 °C</text>
+<rect class="phase__tick phase__axis--alt" x="850.2" y="550.0" width="3" height="7"/>
+<text class="phase__axis phase__axis--alt" x="851.8" y="596.0" text-anchor="middle">80 °C</text>
+<rect class="phase__tick" x="143.0" y="548.5" width="7" height="3"/>
+<text class="phase__axis" x="136.0" y="557.0" text-anchor="end">1 Pa</text>
+<rect class="phase__tick" x="143.0" y="386.5" width="7" height="3"/>
+<text class="phase__axis" x="136.0" y="395.0" text-anchor="end">100 Pa</text>
+<rect class="phase__tick" x="143.0" y="224.5" width="7" height="3"/>
+<text class="phase__axis" x="136.0" y="233.0" text-anchor="end">10 kPa</text>
+<rect class="phase__tick" x="143.0" y="62.5" width="7" height="3"/>
+<text class="phase__axis" x="136.0" y="71.0" text-anchor="end">1 MPa</text>
+<text class="phase__axis" x="551.0" y="648.0" text-anchor="middle">temperature</text>
+<text class="phase__axis" x="150.0" y="46.0">pressure, log scale</text>
+</svg>
+    <div class="readout js-only" aria-live="polite">
+      <p class="readout__state" id="phase-state">Liquid water</p>
+      <p id="phase-line">At harvest the water in the flower is liquid.</p>
+    </div>
+    <div class="scrub js-only">
+      <label for="phase-along">The dot is the water in the flower. Follow it along the path.</label>
+      <div class="scrub__track">
+        <input id="phase-along" type="range" min="0" max="1000" step="10" value="0" aria-valuetext="Harvest: liquid water" aria-describedby="phase-line">
+        <div class="scrub__stops" aria-hidden="true"><span class="scrub__stop-1"></span><span class="scrub__stop-2"></span><span class="scrub__stop-3"></span><span class="scrub__stop-4"></span></div>
+      </div>
+    </div>
+    <div class="chips js-only" role="group" aria-label="Jump to a stage"></div>
+    <figcaption class="how__caption">Water’s phase diagram. The curves are drawn from published data (Murphy and Koop 2005; IAPWS 2011); the triple point is at <span translate="no">0.01&nbsp;°C</span> and <span translate="no">611.657&nbsp;Pa</span>, and 1 atm is <span translate="no">101,325&nbsp;Pa</span>. The path is a sketch of the method. The process’s own settings are not shown.</figcaption>
+  </figure>
+</section>
+
+<div class="bulkhead" aria-hidden="true"><span class="bulkhead__n">Deck 04</span><span class="bulkhead__rule"></span><span class="bulkhead__name"></span></div>
+<section class="grid section" aria-label="The comet">
+  <figure class="how__clip how__clip--row">
+    <span class="wallscreen">
+      <video class="clip" data-clip muted loop playsinline preload="none" poster="assets/clip/comet-poster.jpg" width="960" height="924" aria-hidden="true">
+        <source src="assets/clip/comet.webm" type="video/webm">
+        <source src="assets/clip/comet.mp4" type="video/mp4">
+      </video>
+    </span>
+    <div class="clip-row">
+      <figcaption>Comet 67P, photographed by ESA’s Rosetta on 10&nbsp;September&nbsp;2015, four weeks after its closest pass of the Sun. Sunlight warms the comet’s ice and the ice turns straight to vapour, carrying dust out in jets. The flower’s water makes the same jump in the chamber, with no liquid in between. Slowed, looped and tinted in processing.</figcaption>
+      <button class="clip-toggle" type="button" data-clip-toggle aria-pressed="false" hidden>Pause the clip</button>
+    </div>
+  </figure>
+</section>
+
+<div class="bulkhead" aria-hidden="true"><span class="bulkhead__n">Deck 05</span><span class="bulkhead__rule"></span><span class="bulkhead__name">The record</span></div>
+<section class="grid section patents" aria-labelledby="patents-title">
+  <div class="patents__head" data-reveal>
+    <p class="tag" data-type>The record</p>
+    <h2 class="head" id="patents-title">Four issued US patents.</h2>
+    <p>All titled “Method of drying botanicals”, with Eric Young as the inventor, and all four trace back to one provisional application filed on 18&nbsp;June&nbsp;2018. The first was granted on 5&nbsp;May&nbsp;2020. They are public record at the US Patent and Trademark Office.</p>
+  </div>
+  <figure class="patents__file plate" data-file data-reveal>
+    <span class="plate__c"></span>
+    <p class="tag" data-type>File · Method of drying botanicals · the four front pages, as printed</p>
+    <div class="file" aria-hidden="true">
+      <button class="sheet sheet--340 is-front" type="button" data-sheet="0" tabindex="-1"><span class="sheet__ink"></span></button>
+      <button class="sheet sheet--797" type="button" data-sheet="1" tabindex="-1"><span class="sheet__ink"></span></button>
+      <button class="sheet sheet--212" type="button" data-sheet="2" tabindex="-1"><span class="sheet__ink"></span></button>
+      <button class="sheet sheet--304" type="button" data-sheet="3" tabindex="-1"><span class="sheet__ink"></span></button>
+    </div>
+    <div class="file__axis" aria-hidden="true">
+      <span class="file__tick is-front">5&nbsp;May&nbsp;2020</span>
+      <span class="file__tick">7 Dec 2021</span>
+      <span class="file__tick">7 Jun 2022</span>
+      <span class="file__tick">14&nbsp;May&nbsp;2024</span>
+    </div>
+    <ol class="file__ledger" aria-label="The four patents">
+      <li class="file__row is-front"><button class="file__num" type="button" data-sheet="0" aria-label="Show the front page of US 10,639,340"><span class="ledger__num" translate="no">US 10,639,340</span></button><span class="small">Filed 5&nbsp;April&nbsp;2019 · Granted 5&nbsp;May&nbsp;2020</span><a class="small" href="assets/record/US10639340.pdf">The patent, PDF, 519 KB</a></li>
+      <li class="file__row"><button class="file__num" type="button" data-sheet="1" aria-label="Show the front page of US 11,191,797"><span class="ledger__num" translate="no">US 11,191,797</span></button><span class="small">Filed 20&nbsp;February&nbsp;2020 · Granted 7&nbsp;December&nbsp;2021</span><a class="small" href="assets/record/US11191797.pdf">The patent, PDF, 482 KB</a></li>
+      <li class="file__row"><button class="file__num" type="button" data-sheet="2" aria-label="Show the front page of US 11,351,212"><span class="ledger__num" translate="no">US 11,351,212</span></button><span class="small">Filed 9&nbsp;April&nbsp;2020 · Granted 7&nbsp;June&nbsp;2022</span><a class="small" href="assets/record/US11351212.pdf">The patent, PDF, 540 KB</a></li>
+      <li class="file__row"><button class="file__num" type="button" data-sheet="3" aria-label="Show the front page of US 11,980,304"><span class="ledger__num" translate="no">US 11,980,304</span></button><span class="small">Filed 3&nbsp;December&nbsp;2021 · Granted 14&nbsp;May&nbsp;2024</span><a class="small" href="assets/record/US11980304.pdf">The patent, PDF, 418 KB</a></li>
+    </ol>
+    <figcaption class="small">The front page of each patent as the US Patent and Trademark Office printed it, set in the ship’s colours; the dates under the file are at their true spacing. The later three carry a terminal disclaimer, which is the asterisk on their dates. Source: United States Patent and Trademark Office.</figcaption>
+  </figure>
+</section>
+
+<div class="bulkhead" aria-hidden="true"><span class="bulkhead__n">Deck 06</span><span class="bulkhead__rule"></span><span class="bulkhead__name">Keeping it</span></div>
+<section class="grid section pair" aria-labelledby="keep-title">
+  <div class="pair__a" data-reveal>
+    <p class="tag" data-type>Keeping it</p>
+    <h2 class="head" id="keep-title">Three things keep it right.</h2>
+    <p><span class="strong">Keep it sealed.</span> Air is the enemy of the texture. <span class="strong">Keep it cool.</span> A cupboard, not a windowsill. <span class="strong">Keep it dark.</span> Light works on flower the way it works on anything green.</p>
+    <p>That’s it. No humidity packs, no fussing. And it is meant to break up by hand: just pinch, break, and roll.</p>
+  </div>
+  <figure class="pair__b open-pic" data-reveal>
+    <picture>
+      <source type="image/webp" srcset="assets/img/jar-above-500.webp">
+      <img src="assets/img/jar-above-500.jpg" width="500" height="500" loading="lazy" decoding="async" alt="A hand holding an open jar of green Space Weed flower, seen from above.">
+    </picture>
+    <figcaption><span translate="no">Space&nbsp;Weed</span> flower in the jar.</figcaption>
+  </figure>
+</section>
+
+<div class="bulkhead" aria-hidden="true"><span class="bulkhead__n">Deck 07</span><span class="bulkhead__rule"></span><span class="bulkhead__name">Engine room</span></div>
+<section class="band" aria-labelledby="band-title">
+  <div class="band__stage band__stage--photo" aria-hidden="true">
+    <picture>
+      <source type="image/webp" srcset="assets/img/buds-wood-800.webp 800w, assets/img/buds-wood-1200.webp 1200w, assets/img/buds-wood-1600.webp 1600w" sizes="100vw">
+      <img class="band__pic" src="assets/img/buds-wood-1200.jpg" srcset="assets/img/buds-wood-800.jpg 800w, assets/img/buds-wood-1200.jpg 1200w, assets/img/buds-wood-1600.jpg 1600w" sizes="100vw" width="1600" height="1043" loading="lazy" decoding="async" alt="">
+    </picture>
+    <div class="band__limb"></div>
+  </div>
+  <p class="band__cap small"><span translate="no">Space&nbsp;Weed</span> flower, dried. The client’s photograph.</p>
+  <div class="grid band__text" data-reveal>
+    <p class="tag" data-type>Engine room</p>
+    <h2 class="head" id="band-title">Why a vacuum.</h2>
+    <div class="band__body">
+      <p class="lead">In a vacuum, ice does not melt. It leaves as vapour.</p>
+      <p>That is the whole method: cold first, then a vacuum, and the ice goes out as vapour without melting.</p>
+      <div class="actions">
+        <a class="button" href="find.html"><span class="button__in">Where to find it</span></a>
+        <a class="textlink" href="products.html">See what we make</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__grid">
+    <picture class="foot__mark"><source type="image/webp" srcset="assets/img/lockup-white-800.webp"><img src="assets/img/lockup-white-800.png" width="800" height="270" loading="lazy" decoding="async" alt="Space Weed, Flash Frozen Cured"></picture>
+    <div class="foot__text">
+      <p class="foot__rule">This product has intoxicating effects and may be habit forming. Cannabis can impair concentration, coordination, and judgment. Do not operate a vehicle or machinery under the influence of this drug. There may be health risks associated with consumption of this product. For use only by adults 21 and older. Keep out of the reach of children.</p>
+      <p>Flash&nbsp;Frozen&nbsp;Cured is CannaGenesis’s process. <span translate="no">Space&nbsp;Weed USA</span>, est. 2015.</p>
+      <p><a href="mailto:info@spaceweedusa.com">info@spaceweedusa.com</a></p>
+      <p class="small">A proposal mockup, November 2026, not the live site. Some statements on it are waiting for the client’s confirmation.</p>
+    </div>
+    <ul class="foot__links">
+      <li><a href="process.html">Learn</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="partner.html">Partner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="classified.html">Classified</a></li>
+      <li><a href="contact.html">Mission Control</a></li>
+      <li><a href="find.html">Where to find it</a></li>
+      <li><a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="https://www.cannagenesis.com/">CannaGenesis</a></li>
+    </ul>
+    <div class="foot__credits">
+      <p class="foot__agency small">Ship interiors made with AI. Space pictures: NASA, ESA/Webb, ESO. Not affiliated with or endorsed by any space agency.</p>
+      <p class="foot__credit small">The comet: <a href="https://commons.wikimedia.org/wiki/File:Comet_67P-Churyumov-Gerasimenko_timelapse_2015-09-10_(50097148857).webm">“Comet 67P/Churyumov-Gerasimenko timelapse, 10&nbsp;September&nbsp;2015”</a>, ESA/Rosetta/MPS for OSIRIS Team MPS/UPD/LAM/IAA/SSO/INTA/UPM/DASP/IDA, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, processing and time-lapse by Mark McCaughrean; cropped, slowed and looped.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/run-auto.v1.js" defer></script>
+<script src="assets/site.v1.js" defer></script>
+
+</body>
+</html>

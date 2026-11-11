@@ -1,0 +1,12 @@
+/* The 1200 x 630 share image, rendered from og.html with site-craft's snap.mjs. Version 2: the void, the
+   wide Archivo display, a flight-deck strip and the bud. */
+.og { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--void); position: relative; }
+.og__deck { position: absolute; top: 0; left: 0; right: 0; display: flex; gap: 32px; padding: 14px 48px; font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); }
+.og__deck span:first-child { color: var(--ice); margin-right: auto; }
+.og__card { display: grid; grid-template-columns: 1fr 500px; width: 1200px; height: 630px; align-items: center; padding-top: 40px; }
+.og__text { padding: 0 0 0 64px; display: grid; gap: 22px; }
+.og__mark { width: 280px; margin-left: -10px; margin-bottom: 8px; }
+.og__title { font-family: var(--font-text); font-weight: 300; font-stretch: 112%; font-size: 78px; line-height: 0.98; letter-spacing: -0.025em; max-width: 16ch; margin: 0; }
+.og__line { font-size: 27px; line-height: 1.35; max-width: 24ch; color: var(--ink); }
+.og__legal { font-size: 17px; line-height: 1.35; max-width: 38ch; color: var(--muted); }
+.og__bud { width: 560px; height: 560px; mix-blend-mode: lighten; justify-self: end; margin-right: 0; }

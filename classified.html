@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Classified | Space Weed</title>
+<meta name="description" content="Classified. Space Cadets only. Signing up makes you a Space Cadet and opens this room. For adults 21 and older.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#04070C">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Classified | Space Weed">
+<meta property="og:description" content="Classified. Space Cadets only. Signing up makes you a Space Cadet and opens this room. For adults 21 and older.">
+<meta property="og:image" content="https://avjcodes.github.io/boarding-mock/og-board.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/archivo.v2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/board.v1.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script src="assets/board-boot.v1.js"></script>
+</head>
+<body class="page-classified">
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" aria-describedby="gate-legal">
+  <div class="gate__scene" aria-hidden="true">
+    <picture>
+      <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcset="assets/board/gate-tall-720.webp 720w, assets/board/gate-tall-1080.webp 1080w" sizes="100vw">
+      <img src="assets/board/gate-wide-1280.webp" srcset="assets/board/gate-wide-1280.webp 1280w, assets/board/gate-wide-1920.webp 1920w" sizes="100vw" width="1920" height="1072" alt="" fetchpriority="high" draggable="false">
+    </picture>
+  </div>
+  <div class="gate__ramp" aria-hidden="true">
+    <picture>
+      <source media="(max-aspect-ratio: 1/1)" type="image/webp" srcset="assets/board/ramp-tall-720.webp 720w, assets/board/ramp-tall-1080.webp 1080w" sizes="100vw">
+      <img src="assets/board/ramp-wide-1280.webp" srcset="assets/board/ramp-wide-1280.webp 1280w, assets/board/ramp-wide-1920.webp 1920w" sizes="100vw" width="1920" height="1072" alt="" loading="lazy" decoding="async" draggable="false">
+    </picture>
+  </div>
+  <div class="gate__shade" aria-hidden="true"></div>
+  <div class="gate__panel">
+    <div class="gate__ask">
+      <div class="gate__top">
+        <p class="tag tag--ice">Incoming hail · <span translate="no">Space&nbsp;Weed</span></p>
+        <img class="gate__mark" src="assets/img/wordmark-white-300.webp" srcset="assets/img/wordmark-white-300.webp 300w, assets/img/wordmark-white-600.webp 600w" sizes="144px" width="600" height="370" alt="Space Weed">
+      </div>
+      <p class="gate__invite">Permission to come aboard? This ship carries adults only.</p>
+      <h2 class="gate__q" id="gate-q" tabindex="-1">Have you existed on this Earth for 21+ years?</h2>
+    </div>
+    <div class="gate__act">
+      <div class="gate__buttons">
+        <button class="button" type="button" data-gate="yes">Yes, I’m 21&nbsp;or older</button>
+        <button class="button button--quiet" type="button" data-gate="no">No</button>
+      </div>
+      <div class="gate__denied" hidden>
+        <p tabindex="-1">You must be 21&nbsp;or older to visit this site.</p>
+        <button class="textlink" type="button" data-gate="back">Back to the question</button>
+      </div>
+      <p class="gate__legal" id="gate-legal">For use only by adults 21&nbsp;years of age and older. Keep out of reach of children.</p>
+    </div>
+  </div>
+</div>
+<header class="hdr hdr--nav">
+  <a class="skip" href="#main">Skip to content</a>
+  <a class="mark" href="index.html"><img src="assets/img/wordmark-white-300.webp" srcset="assets/img/wordmark-white-300.webp 300w, assets/img/wordmark-white-600.webp 600w" sizes="84px" width="600" height="370" alt="Space Weed, home"></a>
+  <nav class="hnav" aria-label="Main"><a href="process.html">Learn</a><a href="products.html">Products</a><a href="partner.html">Partner</a><a href="blog.html">Blog</a><a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a></nav>
+  <details class="hmenu"><summary>Menu</summary><nav class="hmenu__list" aria-label="Main"><a href="process.html">Learn</a><a href="products.html">Products</a><a href="partner.html">Partner</a><a href="blog.html">Blog</a><a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a><a href="find.html">Where to find it</a></nav></details>
+  <div class="hdr__right">
+    <a class="hdr__find" href="find.html">Where to find it</a>
+    <a class="hdr__merch" href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a>
+    <button class="age" type="button" data-again aria-label="21+ · show the age check again">21+</button>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="cl" aria-labelledby="cl-title">
+  <div class="cl__bg" aria-hidden="true"><img src="assets/board/classified-wide-1920.webp" srcset="assets/board/classified-wide-1100.webp 1100w, assets/board/classified-wide-1920.webp 1920w" sizes="100vw" width="1920" height="1072" alt="" fetchpriority="high" draggable="false"></div>
+  <div class="cl__panel">
+    <div class="cl__head">
+      <p class="tag tag--signal">Classified</p>
+      <h1 class="display" id="cl-title">Classified. Space&nbsp;Cadets only.</h1>
+      <p class="lead cl__lede">Signing up makes you a Space Cadet and opens this room.</p>
+    </div>
+    <form class="form" id="signup" method="post" action="classified.html" aria-labelledby="signup-title">
+      <div class="form__head">
+        <h2 id="signup-title">Hear about new drops first.</h2>
+        <p>A couple of emails a month at most: new strains, where to find them, and how the process works. For adults 21 and older.</p>
+      </div>
+      <div class="form__row">
+        <label for="su-email">Email address</label>
+        <input id="su-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="form__row">
+        <label for="su-name">First name</label>
+        <input id="su-name" name="name" type="text" autocomplete="given-name">
+      </div>
+      <label class="form__check"><input name="age" type="checkbox" required><span>I am 21 or older.</span></label>
+      <button class="button button--signal" type="submit">Sign me up</button>
+      <p class="form__fine">By signing up you agree to get emails from Space Weed. Unsubscribe any time.</p>
+    </form>
+    <div class="cadet" id="cadet" hidden>
+      <p class="cadet__in" tabindex="-1">You’re in.</p>
+      <div class="card" role="img" aria-label="Space Cadet ID card">
+        <div class="card__top">
+          <img class="card__mark" src="assets/img/wordmark-white-300.webp" width="600" height="370" alt="">
+          <span class="card__kind">Space Cadet</span>
+        </div>
+        <p class="card__name" data-card-name></p>
+        <div class="card__foot">
+          <dl class="card__meta">
+            <div><dt>Cadet No.</dt><dd data-card-no></dd></div>
+            <div><dt>Issued</dt><dd data-card-issued></dd></div>
+          </dl>
+          <span class="card__bars" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+    <p class="mocknote">Proposal mockup: nothing is sent, and your answers stay in this browser.<button class="textlink" type="button" data-clear hidden>Clear them</button></p>
+  </div>
+  <article class="file" id="file" aria-labelledby="file-no">
+    <p class="file__no"><span id="file-no">File 001</span><span class="file__stamp" data-locked>Classified</span><span class="file__stamp" data-open>Declassified</span></p>
+    <div class="file__locked" aria-hidden="true"><span class="redact redact--a"></span><span class="redact redact--b"></span><span class="redact redact--c"></span><span class="redact redact--d"></span></div>
+    <div class="file__body">
+      <h2>Four issued US patents.</h2>
+      <p>Flash&nbsp;Frozen&nbsp;Curing is a patented scientific method whereby fresh cannabis is flash frozen and then dried under vacuum using temperature, time, and pressure.</p>
+      <ol class="ledger" aria-label="The four patents">
+        <li><span class="mono" translate="no">US 10,639,340</span><span class="small">Filed 5&nbsp;April&nbsp;2019 · Granted 5&nbsp;May&nbsp;2020</span><a href="assets/record/US10639340.pdf">The patent, PDF, 519 KB</a></li>
+        <li><span class="mono" translate="no">US 11,191,797</span><span class="small">Filed 20&nbsp;February&nbsp;2020 · Granted 7&nbsp;December&nbsp;2021</span><a href="assets/record/US11191797.pdf">The patent, PDF, 482 KB</a></li>
+        <li><span class="mono" translate="no">US 11,351,212</span><span class="small">Filed 9&nbsp;April&nbsp;2020 · Granted 7&nbsp;June&nbsp;2022</span><a href="assets/record/US11351212.pdf">The patent, PDF, 540 KB</a></li>
+        <li><span class="mono" translate="no">US 11,980,304</span><span class="small">Filed 3&nbsp;December&nbsp;2021 · Granted 14&nbsp;May&nbsp;2024</span><a href="assets/record/US11980304.pdf">The patent, PDF, 418 KB</a></li>
+      </ol>
+    </div>
+  </article>
+</section>
+</main>
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <img class="foot__mark" src="assets/img/lockup-white-800.webp" width="800" height="270" loading="lazy" decoding="async" alt="Space Weed, Flash Frozen Cured">
+      <div class="foot__text">
+        <p class="foot__rule">This product has intoxicating effects and may be habit forming. Cannabis can impair concentration, coordination, and judgment. Do not operate a vehicle or machinery under the influence of this drug. There may be health risks associated with consumption of this product. For use only by adults 21 and older. Keep out of the reach of children.</p>
+        <p>Flash&nbsp;Frozen&nbsp;Cured is CannaGenesis’s process. <span translate="no">Space&nbsp;Weed USA</span>, est. 2015.</p>
+        <p><a href="mailto:info@spaceweedusa.com">info@spaceweedusa.com</a></p>
+        <p class="small">A proposal mockup, November 2026, not the live site. Some statements on it are waiting for the client’s confirmation.</p>
+      </div>
+    </div>
+    <ul class="foot__links">
+      <li><a href="process.html">Learn</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="partner.html">Partner</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="classified.html">Classified</a></li>
+      <li><a href="contact.html">Mission Control</a></li>
+      <li><a href="find.html">Where to find it</a></li>
+      <li><a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="https://www.cannagenesis.com/">CannaGenesis</a></li>
+    </ul>
+    <p class="foot__credits small">Ship pictures made with AI. Not affiliated with or endorsed by any space agency.</p>
+  </div>
+</footer>
+<div class="turn" aria-hidden="true">
+  <img src="assets/img/wordmark-white-300.webp" width="600" height="370" alt="">
+  <svg width="44" height="44" viewBox="0 0 44 44" focusable="false"><rect x="14" y="6" width="16" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 30a14 14 0 0 1 0-16M5 17l3-3 3 3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  <p>Turn your phone upright to board the ship.</p>
+</div>
+<script src="assets/board.v1.js" defer></script>
+<script src="assets/cadet.v1.js" defer></script>
+</body>
+</html>

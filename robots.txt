@@ -1,0 +1,3 @@
+# Proposal mockup, not the live site. Nothing here is for search engines until launch.
+User-agent: *
+Disallow: /
