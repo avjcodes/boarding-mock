@@ -208,6 +208,38 @@ html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
   .room.rest .door:hover .door__hit::after{opacity:0}
 }
 .room.is-leaving .room__stage{transform:scale(1.45);opacity:0;transition:transform 420ms var(--ease-travel),opacity 360ms ease 60ms}
+/* doors: the leaves */
+.door--1{--l:4.30;--t:40.20;--w:8.30;--h:27.40;--s:49.64%;--cut:polygon(0.00% 7.30%,10.84% 0.00%,91.57% 0.36%,100.00% 9.49%,100.00% 83.21%,86.75% 97.81%,10.84% 100.00%,0.00% 88.32%)}
+.door--2{--l:23.15;--t:42.50;--w:7.70;--h:20.90;--s:49.87%;--cut:polygon(0.00% 7.18%,10.39% 0.00%,90.26% 0.00%,100.00% 8.13%,100.00% 85.65%,86.36% 99.52%,16.23% 100.00%,0.00% 90.91%)}
+.door--3{--l:39.30;--t:43.20;--w:7.30;--h:18.90;--s:51.37%;--cut:polygon(0.00% 5.82%,10.96% 0.00%,90.41% 0.00%,100.00% 6.35%,100.00% 67.20%,83.56% 67.46%,61.64% 68.52%,47.26% 71.43%,36.99% 76.19%,32.19% 81.48%,32.19% 100.00%,14.38% 100.00%,0.00% 89.95%)}
+.door--4{--l:55.05;--t:43.20;--w:6.40;--h:18.75;--s:48.91%;--cut:polygon(0.00% 5.87%,8.59% 0.00%,91.41% 0.00%,100.00% 5.87%,100.00% 90.67%,88.28% 100.00%,53.91% 100.00%,53.91% 83.73%,44.53% 76.80%,26.56% 71.20%,2.34% 68.80%,0.00% 68.80%)}
+.door--5{--l:70.05;--t:42.40;--w:7.85;--h:21.10;--s:48.92%;--cut:polygon(0.00% 8.53%,12.10% 0.00%,80.89% 0.00%,100.00% 9.00%,100.00% 93.36%,87.26% 100.00%,13.38% 100.00%,0.00% 84.83%)}
+.door--6{--l:88.05;--t:40.20;--w:7.35;--h:27.30;--s:54.29%;--cut:polygon(0.00% 6.23%,12.93% 0.00%,90.48% 0.00%,100.00% 6.59%,100.00% 89.38%,87.76% 100.00%,14.29% 96.70%,0.00% 83.15%)}
+.bud{z-index:4}
+.door__open{position:absolute;left:calc(var(--l) * 1%);top:calc(var(--t) * 1%);width:calc(var(--w) * 1%);height:calc(var(--h) * 1%);overflow:hidden;clip-path:var(--cut);pointer-events:none;--glow:155,220,247}
+.door--amber .door__open{--glow:245,166,91}
+.door__beyond{position:absolute;inset:0;background:#0A141C center/cover no-repeat}
+.door--1 .door__beyond{background-image:url(board/door-1.webp)}
+.door--2 .door__beyond{background-image:url(board/door-2.webp)}
+.door--3 .door__beyond{background-image:url(board/door-3.webp)}
+.door--4 .door__beyond{background-image:url(board/door-4.webp)}
+.door--5 .door__beyond{background-image:url(board/door-5.webp)}
+.door--6 .door__beyond{background-image:url(board/door-6.webp)}
+.door__beyond::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 46% at 50% 40%,rgba(var(--glow),0.3),rgba(var(--glow),0) 78%),linear-gradient(to top,rgba(var(--glow),0.28),rgba(var(--glow),0) 30%);mix-blend-mode:screen}
+.door__open::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 calc(var(--stage-w) * 0.008) calc(var(--stage-w) * 0.0015) rgba(4,7,12,0.85);pointer-events:none}
+.door__leaf{position:absolute;inset:0;overflow:hidden;will-change:transform;transition:transform 540ms cubic-bezier(0.7,0,0.22,1) 110ms}
+.door__leaf--l{clip-path:inset(0 calc(100% - var(--s)) 0 0)}
+.door__leaf--r{clip-path:inset(0 0 0 var(--s))}
+.door__leaf img{position:absolute;max-width:none;width:calc(10000% / var(--w));height:calc(10000% / var(--h));left:calc(-100% * var(--l) / var(--w));top:calc(-100% * var(--t) / var(--h));-webkit-user-drag:none}
+.door__leaf::after{content:"";position:absolute;top:0;bottom:0;width:max(2px,calc(var(--stage-w) * 0.0016));background:linear-gradient(to bottom,rgba(var(--glow),0.2),#FFFFFF 30%,#FFFFFF 70%,rgba(var(--glow),0.2));opacity:0;transition:opacity 120ms ease}
+.door__leaf--l::after{right:calc(100% - var(--s))}
+.door__leaf--r::after{left:var(--s)}
+.door.is-opening .door__leaf::after{opacity:1}
+.door.is-opening .door__leaf--l{transform:translateX(calc(var(--s) * -1))}
+.door.is-opening .door__leaf--r{transform:translateX(calc(100% - var(--s)))}
+.door.is-opening .door__hit::after{opacity:0.7;inset:-4% -30% -8%;transition:opacity 420ms ease 160ms}
+.room.is-leaving .room__stage{transition:transform 460ms var(--ease-travel),opacity 320ms ease 140ms}
+/* doors: end */
 .room.is-leaving .deck,.room.is-leaving .pan-hint{opacity:0;transition:opacity 200ms ease}
 
 /* the approved home lines, on the floor */

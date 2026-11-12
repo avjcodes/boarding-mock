@@ -419,24 +419,69 @@
   addEventListener('blur', endDrag);
   document.addEventListener('visibilitychange', endDrag);
 
-  /* a door: the room pushes toward it for 400 ms, then its page opens */
+  /* a door: its two leaves part at the seam and slide into the wall, the room pushes toward the light, then its
+     page opens. The leaves are cut from the room picture itself (door__open is clipped to the slab's outline), so
+     nothing is drawn until a door is used. */
+  let opening = false;
+  /* what shows through each doorway is a picture of the room behind it (tools/door_views.py); fetched once the room
+     is up, so it is there before a door is used */
+  const views = () => doorLinks.forEach((d) => {
+    const n = (d.className.match(/door--([1-6])/) || [])[1];
+    if (n) new Image().src = `assets/board/door-${n}.webp`;
+  });
+  if (moving()) { if ('requestIdleCallback' in window) requestIdleCallback(views, { timeout: 2500 }); else setTimeout(views, 1200); }
+  const openDoor = (door) => {
+    const src = roomImg && (roomImg.currentSrc || roomImg.src);
+    const open = document.createElement('span');
+    open.className = 'door__open';
+    open.setAttribute('aria-hidden', 'true');
+    const beyond = document.createElement('span');
+    beyond.className = 'door__beyond';
+    open.appendChild(beyond);
+    const waits = [];
+    ['l', 'r'].forEach((side) => {
+      const leaf = document.createElement('span');
+      leaf.className = `door__leaf door__leaf--${side}`;
+      const pic = new Image();
+      pic.alt = '';
+      pic.draggable = false;
+      pic.src = src;
+      if (pic.decode) waits.push(pic.decode().catch(() => {}));
+      leaf.appendChild(pic);
+      open.appendChild(leaf);
+    });
+    door.insertBefore(open, door.firstChild);
+    return Promise.race([Promise.all(waits), new Promise((r) => setTimeout(r, 160))]).then(() => open);
+  };
   stage.addEventListener('click', (e) => {
     const door = e.target.closest('a.door');
     if (!door) return;
     if (clickGuard) { e.preventDefault(); return; }
     if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (!moving() || room.classList.contains('is-leaving')) return;
+    if (opening || room.classList.contains('is-leaving')) { e.preventDefault(); return; }
+    if (!moving()) return;
     e.preventDefault();
+    opening = true;
     const hit = door.querySelector('.door__hit');
     const ox = (hit.offsetLeft + hit.offsetWidth / 2) / stage.offsetWidth * 100;
-    const oy = (hit.offsetTop + hit.offsetHeight * 0.4) / stage.offsetHeight * 100;
+    const oy = (hit.offsetTop + hit.offsetHeight * 0.5) / stage.offsetHeight * 100;
     stage.style.setProperty('--ox', ox.toFixed(2) + '%');
     stage.style.setProperty('--oy', oy.toFixed(2) + '%');
-    room.classList.add('is-leaving');
-    setTimeout(() => { location.href = door.href; }, 400);
+    openDoor(door).then((open) => {
+      void open.offsetWidth;
+      door.classList.add('is-opening');
+      setTimeout(() => room.classList.add('is-leaving'), 520);
+      setTimeout(() => { location.href = door.href; }, 960);
+    });
   });
-  /* Back from the next page restores this one from the cache: open the room again */
-  addEventListener('pageshow', (e) => { if (e.persisted) room.classList.remove('is-leaving'); });
+  /* Back from the next page restores this one from the cache: shut the door and open the room again */
+  addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    opening = false;
+    room.classList.remove('is-leaving');
+    room.querySelectorAll('.door.is-opening').forEach((d) => d.classList.remove('is-opening'));
+    room.querySelectorAll('.door__open').forEach((el) => el.remove());
+  });
 
   let raf = 0;
   addEventListener('resize', () => {
