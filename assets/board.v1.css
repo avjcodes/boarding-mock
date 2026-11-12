@@ -63,16 +63,26 @@ html.gate-pending,html.gate-pending body{overflow:hidden}
    the odd comet, the ship (a still), the beam, the astronaut (a transparent loop), the flash at the hatch.
    --ax/--ay/--ah: where he floats and how tall he is; --sw: the ship's width; --hy: where its hatch stops (the ship
    picture's hatch sits 78% across and 68.7% down it, so its top is --hy minus 0.2644 of its width). */
-.space{position:absolute;inset:0;overflow:hidden;background:#010205;--ax:62vw;--ay:66vh;--ah:38vh;--sw:min(56vw,108vh);--hy:30vh;-webkit-user-select:none;user-select:none}
+.space{position:absolute;inset:0;overflow:hidden;background:#010205;--ax:62vw;--ay:66vh;--ah:38vh;--sw:min(56vw,108vh);--hy:30vh;--lift:calc(var(--hy) - var(--ay));--vx:86vw;--vy:10vh;-webkit-user-select:none;user-select:none}
 .space__stars,.space__comets,.space__twinkles{position:absolute;inset:0;width:100%;height:100%}
+.space__fx{position:absolute;inset:0;pointer-events:none}
 .twinkle{position:absolute;left:var(--x);top:var(--y);width:var(--s,3px);height:var(--s,3px);margin:calc(var(--s,3px) / -2) 0 0 calc(var(--s,3px) / -2);border-radius:50%;background:#F2F7FF;box-shadow:0 0 0.4rem 0.05rem rgba(196,224,255,0.6);opacity:0.5}
 @media (prefers-reduced-motion:no-preference){html:not(.motion-off) .twinkle{animation:twinkle var(--d,4s) ease-in-out var(--dl,0s) infinite alternate}}
 @keyframes twinkle{from{opacity:0.12;transform:scale(0.55)}to{opacity:0.95;transform:none}}
 .comet{position:absolute;left:0;top:0;width:var(--len,170px);height:2px;margin-top:-1px;border-radius:2px;background:linear-gradient(90deg,rgba(214,236,255,0),rgba(214,236,255,0.8));transform-origin:100% 50%;opacity:0;pointer-events:none}
 .comet::after{content:"";position:absolute;right:-3px;top:-2px;width:6px;height:6px;border-radius:50%;background:#F4FAFF;box-shadow:0 0 0.6rem 0.15rem rgba(190,225,255,0.75)}
-.space__ship{position:absolute;left:calc(var(--ax) - var(--sw) * 0.78);top:calc(var(--hy) - var(--sw) * 0.2644);width:var(--sw);transform:translateY(-125vh);pointer-events:none}
+.space__ship{position:absolute;left:calc(var(--ax) - var(--sw) * 0.78);top:calc(var(--hy) - var(--sw) * 0.2644);width:var(--sw);opacity:0;transform:translate(var(--dx,30vw),var(--dy,-30vh)) scale(0.02);pointer-events:none}
+.space__ship::before{content:"";position:absolute;right:-2%;top:14%;width:15%;height:32%;border-radius:50%;background:radial-gradient(closest-side,rgba(226,244,255,0.95),rgba(120,196,255,0.45) 46%,rgba(120,196,255,0));opacity:0;pointer-events:none}
+/* the jump: star streaks from the far point the ship arrives from (--vx/--vy, set in board.v1.js), the flare where it
+   drops out, and the light trail it leaves */
+.warp{position:absolute;left:var(--vx);top:var(--vy);width:var(--len);height:var(--th,1.5px);margin-top:-1px;border-radius:2px;background:linear-gradient(90deg,rgba(214,236,255,0),rgba(230,244,255,0.95));transform-origin:0 50%;transform:rotate(var(--a)) translateX(var(--r)) scaleX(0);opacity:0;pointer-events:none}
+.space__pop{position:absolute;left:var(--vx);top:var(--vy);width:20vmin;height:20vmin;margin:-10vmin 0 0 -10vmin;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,0.98),rgba(170,220,255,0.5) 40%,rgba(170,220,255,0));opacity:0;transform:scale(0.1);pointer-events:none}
+.space__trail{position:absolute;left:var(--vx);top:var(--vy);width:var(--tl,0px);height:4px;margin-top:-2px;border-radius:4px;background:linear-gradient(90deg,rgba(190,228,255,0),rgba(226,244,255,0.95));transform-origin:0 50%;transform:rotate(var(--ta,0deg)) scaleX(0);opacity:0;pointer-events:none}
+/* the pull: rings that climb the beam and narrow toward the hatch, and the sparks where he goes in */
+.ring{position:absolute;left:var(--ax);top:var(--ay);width:calc(var(--ah) * 0.66);height:calc(var(--ah) * 0.17);margin:calc(var(--ah) * -0.085) 0 0 calc(var(--ah) * -0.33);border-radius:50%;border:1.5px solid rgba(220,242,255,0.9);box-shadow:0 0 0.55rem rgba(150,215,255,0.65),inset 0 0 0.4rem rgba(150,215,255,0.35);opacity:0;pointer-events:none}
+.spark{position:absolute;left:var(--ax);top:var(--hy);width:var(--len,5vmin);height:2px;margin-top:-1px;border-radius:2px;background:linear-gradient(90deg,rgba(255,250,235,0.95),rgba(255,236,190,0));transform-origin:0 50%;transform:rotate(var(--a)) scaleX(0);opacity:0;pointer-events:none}
 .space__ship img{display:block;width:100%;height:auto;max-width:none;-webkit-user-drag:none}
-.space__beam{position:absolute;left:calc(var(--ax) - 15vw);top:var(--hy);width:30vw;height:calc(100% - var(--hy));-webkit-clip-path:polygon(46.5% 0,53.5% 0,100% 100%,0 100%);clip-path:polygon(46.5% 0,53.5% 0,100% 100%,0 100%);background:linear-gradient(to bottom,rgba(226,243,255,0.8),rgba(155,220,247,0.32) 50%,rgba(155,220,247,0));opacity:0;transform:scaleY(0);transform-origin:50% 0;pointer-events:none}
+.space__beam{position:absolute;left:calc(var(--ax) - 24vw);top:var(--hy);width:48vw;height:calc(var(--ay) - var(--hy) + var(--ah) * 0.85);background:conic-gradient(from 166deg at 50% 0,rgba(150,215,250,0) 0deg,rgba(150,215,250,0.1) 4deg,rgba(190,230,255,0.36) 9deg,rgba(226,244,255,0.7) 12deg,rgba(244,251,255,0.82) 14deg,rgba(226,244,255,0.7) 16deg,rgba(190,230,255,0.36) 19deg,rgba(150,215,250,0.1) 24deg,rgba(150,215,250,0) 28deg,rgba(150,215,250,0) 360deg);-webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,0.75) 45%,rgba(0,0,0,0) 96%);mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,0.75) 45%,rgba(0,0,0,0) 96%);opacity:0;transform:scaleY(0);transform-origin:50% 0;pointer-events:none}
 .space__astro{position:absolute;left:var(--ax);top:var(--ay);height:var(--ah);transform:translate(-46.4%,-53.6%);transform-origin:46.4% 53.6%;pointer-events:none}
 .space__astro img{display:block;height:100%;width:auto;max-width:none;-webkit-user-drag:none}
 .space__flash{position:absolute;left:var(--ax);top:var(--hy);width:34vmin;height:34vmin;margin:-17vmin 0 0 -17vmin;border-radius:50%;background:radial-gradient(closest-side,rgba(255,252,240,0.95),rgba(255,238,196,0.4) 45%,rgba(255,238,196,0));opacity:0;transform:scale(0.2);pointer-events:none}
@@ -91,16 +101,31 @@ html.gate-pending,html.gate-pending body{overflow:hidden}
 .gate__denied{display:grid;gap:0.4rem;justify-items:start}
 .gate__denied p{font-size:var(--step-lead);line-height:1.3;outline:0}
 
-/* boarding, about 3.4 s: the question goes, the ship comes down and settles into a hover (0.06 to 1.46 s), the beam
-   opens (1.1 s) and lights him, he is pulled up and shrinks into the hatch (1.35 to 2.75 s), the hatch flashes (2.62 s),
-   the room fades in (2.85 s). A tap, a click or Enter/Space/Escape during the move goes straight to the room. */
+/* boarding, about 3.8 s: the question goes and the stars streak (0 to 0.7 s), the ship drops out of the jump at a far
+   point and rushes in, braking into a hover (0.56 to 1.6 s), the beam opens (1.48 s) and rings climb it, he dips, lifts
+   and is pulled into the hatch (1.68 to 3.0 s), sparks and a flash at the hatch (2.96 s), the room fades in (3.25 s). A tap, a click or Enter/Space/Escape during the move goes straight to the room. */
 html.is-boarding .gate__panel,html.is-boarding .gate__shade{opacity:0;transition:opacity 280ms ease}
-html.is-boarding .space__ship{animation:descend 1400ms 60ms both;will-change:transform}
-@keyframes descend{0%{transform:translateY(-125vh);animation-timing-function:cubic-bezier(0.2,0.65,0.35,1)}72%{transform:translateY(1.4vh);animation-timing-function:cubic-bezier(0.45,0,0.55,1)}100%{transform:none}}
-html.is-boarding .space__beam{animation:beam 1900ms ease 1100ms both}
-@keyframes beam{0%{opacity:0;transform:scaleY(0)}18%{opacity:1;transform:none}82%{opacity:1;transform:none}100%{opacity:0;transform:scaleX(0.15)}}
-html.is-boarding .space__astro{transform:translate(-46.4%,-53.6%) translateY(calc(var(--hy) - var(--ay))) scale(0.06);opacity:0;filter:brightness(1.22) saturate(0.85);transition:transform 1400ms cubic-bezier(0.55,0,0.85,0.35) 1350ms,opacity 110ms ease-in 2650ms,filter 450ms ease 1200ms;will-change:transform,opacity}
-html.is-boarding .space__flash{animation:flash 700ms ease-out 2620ms both}
+html.is-boarding .warp{animation:warp 560ms cubic-bezier(0.5,0,0.9,0.4) var(--dl,0ms) both}
+@keyframes warp{0%{opacity:0;transform:rotate(var(--a)) translateX(var(--r)) scaleX(0)}25%{opacity:1}70%{opacity:1;transform:rotate(var(--a)) translateX(calc(var(--r) * 1.7)) scaleX(1)}100%{opacity:0;transform:rotate(var(--a)) translateX(calc(var(--r) * 3.4)) scaleX(0.35)}}
+html.is-boarding .space__stars{transform-origin:var(--vx) var(--vy);animation:lurch 900ms cubic-bezier(0.3,0,0.2,1) 60ms both}
+@keyframes lurch{0%{transform:none}55%{transform:scale(1.14)}100%{transform:none}}
+html.is-boarding .space__pop{animation:pop 440ms ease-out 500ms both}
+@keyframes pop{0%{opacity:0;transform:scale(0.1)}30%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(0.45)}}
+html.is-boarding .space__trail{animation:trail 820ms ease-out 560ms both}
+@keyframes trail{0%{opacity:0;transform:rotate(var(--ta,0deg)) scaleX(0)}20%{opacity:0.95;transform:rotate(var(--ta,0deg)) scaleX(0.8)}100%{opacity:0;transform:rotate(var(--ta,0deg)) scaleX(1)}}
+html.is-boarding .space__ship{animation:arrive 1050ms 560ms both;will-change:transform,opacity}
+@keyframes arrive{0%{opacity:0;transform:translate(var(--dx,30vw),var(--dy,-30vh)) scale(0.02) rotate(-6deg);animation-timing-function:cubic-bezier(0.05,0.88,0.15,1)}5%{opacity:1}74%{opacity:1;transform:translate(0,1vh) scale(1.035) rotate(0.5deg);animation-timing-function:cubic-bezier(0.4,0,0.6,1)}100%{opacity:1;transform:none}}
+html.is-boarding .space__ship::before{animation:burn 1800ms ease-out 560ms both}
+@keyframes burn{0%{opacity:0;transform:scale(2)}16%{opacity:1;transform:scale(2)}60%{opacity:0.9;transform:scale(1.2)}100%{opacity:0.4;transform:scale(0.8)}}
+html.is-boarding .ring{animation:ring 470ms cubic-bezier(0.4,0,0.85,0.5) var(--dl,1600ms) 2 both}
+@keyframes ring{0%{opacity:0;transform:translateY(calc(var(--ah) * 0.38)) scale(1.18)}18%{opacity:0.95}100%{opacity:0;transform:translateY(var(--lift)) scale(0.1)}}
+html.is-boarding .spark{animation:spark 480ms ease-out 2960ms both}
+@keyframes spark{0%{opacity:0;transform:rotate(var(--a)) translateX(0) scaleX(0.2)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateX(var(--r)) scaleX(1)}}
+html.is-boarding .space__beam{animation:beam 1780ms ease 1480ms both}
+@keyframes beam{0%{opacity:0;transform:scaleY(0)}13%{opacity:1;transform:none}30%{opacity:0.8}46%{opacity:1}62%{opacity:0.84}84%{opacity:1;transform:none}100%{opacity:0;transform:scaleX(0.08)}}
+html.is-boarding .space__astro{animation:abduct 1320ms 1680ms both;filter:brightness(1.28) saturate(0.85);transition:filter 420ms ease 1480ms;will-change:transform,opacity}
+@keyframes abduct{0%{opacity:1;transform:translate(-46.4%,-53.6%);animation-timing-function:ease-in-out}13%{opacity:1;transform:translate(-46.4%,-53.6%) translateY(1.5vh) scale(1.03) rotate(-2.5deg);animation-timing-function:cubic-bezier(0.3,0,0.7,1)}34%{opacity:1;transform:translate(-46.4%,-53.6%) translateY(calc(var(--lift) * 0.1)) scale(0.97) rotate(4deg);animation-timing-function:cubic-bezier(0.7,0,0.95,0.45)}90%{opacity:1}100%{opacity:0;transform:translate(-46.4%,-53.6%) translateY(var(--lift)) scale(0.035,0.1) rotate(16deg)}}
+html.is-boarding .space__flash{animation:flash 700ms ease-out 2960ms both}
 @keyframes flash{0%{opacity:0;transform:scale(0.2)}35%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
 html.is-arriving .gate{opacity:0;transition:opacity 560ms ease}
 html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
@@ -312,7 +337,7 @@ html.is-arriving .room__stage{animation:settle 1100ms var(--ease-out) both}
 /* ---------- the gate on an upright screen: question in the sky, buttons at the thumb ---------- */
 @media (max-aspect-ratio:1/1){
   .space{--ax:50vw;--ay:61vh;--ah:30vh;--sw:150vw;--hy:24vh}
-  .space__beam{left:calc(var(--ax) - 32vw);width:64vw}
+  .space__beam{left:calc(var(--ax) - 60vw);width:120vw}
   .gate__shade{background:
     linear-gradient(to bottom,rgba(4,7,12,0.82) 0%,rgba(4,7,12,0.46) 28%,rgba(4,7,12,0) 42%),
     linear-gradient(to top,rgba(4,7,12,0.92) 0%,rgba(4,7,12,0.62) 18%,rgba(4,7,12,0) 36%)}

@@ -116,10 +116,59 @@
       }
     };
 
+    /* the arrival: the far point the ship drops out of the jump at (up and to the right, behind it), star streaks
+       fanning out from that point, the flare and the light trail, the rings that climb the beam and the sparks at the
+       hatch. All of it is positioned here and moved by board.v1.css once boarding starts. */
+    const ship = sp.querySelector('.space__ship');
+    const fx = document.createElement('div');
+    fx.className = 'space__fx';
+    const mk = (cls, parent) => { const el = document.createElement('i'); el.className = cls; (parent || fx).appendChild(el); return el; };
+    const placeArrival = () => {
+      if (!ship) return;
+      fx.textContent = '';
+      const w = sp.clientWidth;
+      const h = sp.clientHeight;
+      if (!w || !h) return;
+      const tall = upright.matches;
+      const vx = w * (tall ? 0.84 : 0.88);
+      const vy = h * (tall ? 0.07 : 0.1);
+      const cx = ship.offsetLeft + ship.offsetWidth / 2;
+      const cy = ship.offsetTop + ship.offsetHeight / 2;
+      sp.style.setProperty('--vx', `${vx.toFixed(1)}px`);
+      sp.style.setProperty('--vy', `${vy.toFixed(1)}px`);
+      sp.style.setProperty('--dx', `${(vx - cx).toFixed(1)}px`);
+      sp.style.setProperty('--dy', `${(vy - cy).toFixed(1)}px`);
+      sp.style.setProperty('--tl', `${Math.hypot(cx - vx, cy - vy).toFixed(1)}px`);
+      sp.style.setProperty('--ta', `${(Math.atan2(cy - vy, cx - vx) * 180 / Math.PI).toFixed(2)}deg`);
+      const rnd = seeded(9001);
+      const reach = Math.hypot(w, h);
+      const lines = tall ? 46 : 72;
+      for (let i = 0; i < lines; i++) {
+        const l = mk('warp');
+        l.style.setProperty('--a', `${(rnd() * 360).toFixed(1)}deg`);
+        l.style.setProperty('--r', `${(reach * (0.04 + rnd() * 0.3)).toFixed(0)}px`);
+        l.style.setProperty('--len', `${(reach * (0.05 + rnd() * 0.16)).toFixed(0)}px`);
+        l.style.setProperty('--th', `${(0.8 + rnd() * 1.4).toFixed(1)}px`);
+        l.style.setProperty('--dl', `${(rnd() * 190).toFixed(0)}ms`);
+      }
+      mk('space__trail');
+      mk('space__pop');
+      for (let i = 0; i < 4; i++) mk('ring').style.setProperty('--dl', `${1620 + i * 130}ms`);
+      const unit = Math.min(w, h);
+      for (let i = 0; i < 14; i++) {
+        const s = mk('spark');
+        s.style.setProperty('--a', `${(i * (360 / 14) + rnd() * 16).toFixed(1)}deg`);
+        s.style.setProperty('--r', `${(unit * (0.07 + rnd() * 0.09)).toFixed(0)}px`);
+        s.style.setProperty('--len', `${(unit * (0.03 + rnd() * 0.04)).toFixed(0)}px`);
+      }
+    };
+    if (ship) sp.insertBefore(fx, ship);
+
     let rz = 0;
-    addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { draw(); placeTwinkles(); }); });
+    addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { draw(); placeTwinkles(); placeArrival(); }); });
     draw();
     placeTwinkles();
+    placeArrival();
 
     /* comets: one every 6 to 10 s, far behind him, in open sky only. Wide screens: right of the words and above his
        helmet, falling right to left. Upright screens: across the band between the question and his helmet. */
@@ -216,7 +265,8 @@
     });
   }
 
-  /* Yes: the ship comes down, the beam takes him up into the hatch, the hatch flashes, the room fades in. About 3.3 s;
+  /* Yes: the stars streak, the ship drops out of the jump and brakes over him, the beam takes him up into the hatch,
+     the hatch flashes, the room fades in. About 3.8 s;
      the timing lives in board.v1.css. */
   function board(done) {
     if (!moving()) { done(); return; }
@@ -240,10 +290,10 @@
       gate.addEventListener('pointerdown', arrive);
       addEventListener('keydown', onKey, true);
     }, 600);
-    /* the room fades in once its picture is ready, never before the flash (2.85 s) and never later than 4.6 s */
+    /* the room fades in once its picture is ready, never before the flash (3.25 s) and never later than 5 s */
     const ready = roomImg && roomImg.decode ? roomImg.decode().catch(() => {}) : Promise.resolve();
-    const atLeast = new Promise((res) => setTimeout(res, 2850));
-    const atMost = new Promise((res) => setTimeout(res, 4600));
+    const atLeast = new Promise((res) => setTimeout(res, 3250));
+    const atMost = new Promise((res) => setTimeout(res, 5000));
     Promise.race([Promise.all([ready, atLeast]), atMost]).then(arrive);
   }
 
