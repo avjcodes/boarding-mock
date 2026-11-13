@@ -453,3 +453,8 @@ html.motion-off .room.is-leaving .room__stage{transform:none}
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;transition-delay:0ms !important}
   .room.is-leaving .room__stage{transform:none}
 }
+/* Where to find it, sealed (13 Nov) */
+.is-sealed{cursor:not-allowed;opacity:0.62;user-select:none;-webkit-user-select:none}
+.is-sealed:hover{color:inherit;border-color:inherit}
+.hmenu__sealed{display:flex;align-items:center;min-height:2.75rem;padding:0 0.75rem;font-weight:600}
+.seal{display:inline-block;margin-left:0.45em;padding:0.1em 0.4em;border:1px solid #F5A65B;color:#F5A65B;font-size:0.7em;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;line-height:1.3;vertical-align:0.1em}
