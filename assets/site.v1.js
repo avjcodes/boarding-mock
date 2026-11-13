@@ -909,4 +909,77 @@
     else if (document.readyState === 'complete') later();
     else addEventListener('load', later, { once: true });
   })();
+  /* from Don's 11 Nov draft: Mission Control links open the contact form over the page */
+  (() => {
+    const dlg = document.getElementById('comms');
+    const openers = [...document.querySelectorAll('a[data-comms]')];
+    if (!dlg || typeof dlg.showModal !== 'function' || !openers.length) return;
+    const own = document.querySelector('main .form[data-contact]');   // the page's own copy of the form, at its foot (Partner, Contact)
+    const nav = document.getElementById('nav');
+    const menuBtn = document.querySelector('.menu-btn');
+    const note = dlg.querySelector('[data-form-note]');
+    const menuOpen = () => { try { return !!nav && nav.matches(':popover-open'); } catch { return false; } };
+    let opener = null;
+    let topAtOpen = 0;   // where the page stood when the dialog opened
+    const open = (from) => {
+      if (dlg.open) return;
+      opener = from;
+      if (menuOpen()) { opener = menuBtn; nav.hidePopover(); }   // a link in the phone menu has no box once the menu closes: focus returns to the Menu button
+      if (note) note.textContent = '';
+      const barW = innerWidth - html.clientWidth;   // the width of the classic scrollbar on screen now (0 where scrollbars overlay), read at every open and kept nowhere
+      topAtOpen = scrollY;
+      if (barW > 0) html.style.setProperty('--comms-sbw', barW + 'px');   // the lock takes the scrollbar away: the page is padded by its width and the fixed layers keep clear of the edge (site.css), so nothing moves and the viewport units keep their value; --sbw is the gate's and is not touched
+      html.classList.toggle('comms-bar', barW > 0);
+      html.classList.add('comms-open');
+      dlg.showModal();
+      (fine.matches ? dlg.querySelector('input') : dlg.querySelector('.comms__title'))?.focus();   // a phone keeps its keyboard down until a field is touched
+    };
+    dlg.addEventListener('close', () => {
+      html.classList.remove('comms-open', 'comms-bar');
+      html.style.removeProperty('--comms-sbw');
+      if (Math.abs(scrollY - topAtOpen) > 0.5) scrollTo({ top: topAtOpen, behavior: 'instant' });   // the scrollbar's return makes the browser lay the page out once without it, and a page resting at its foot is held to that shorter height: it goes back to where it was
+      (opener && opener.getClientRects().length ? opener : document.getElementById('main'))?.focus({ preventScroll: true });
+      opener = null;
+    });
+    const outside = (e) => { const r = dlg.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    let pressedOut = false;
+    dlg.addEventListener('pointerdown', (e) => { pressedOut = outside(e); });
+    dlg.addEventListener('click', (e) => {
+      if (e.target.closest('[data-comms-close]') || (pressedOut && outside(e))) dlg.close();
+      pressedOut = false;
+    });
+    for (const a of openers) {
+      if (!own) a.setAttribute('aria-haspopup', 'dialog');
+      a.addEventListener('click', (e) => {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;   // a new tab asked for stays a new tab
+        if (html.classList.contains('gate-arriving') || html.classList.contains('vt')) return;   // the airlock's leaves are still parting, or a door between pages is still closing (a modal would paint over either): the link goes to the contact page
+        e.preventDefault();
+        if (own) {   // this page carries the form: take the visitor to it, not to a second copy
+          if (menuOpen()) nav.hidePopover();
+          const head = document.getElementById(own.closest('section')?.getAttribute('aria-labelledby') || '');   // the form's section heading (tabindex -1 in the page)
+          (head || own).scrollIntoView({ block: 'start', behavior: motionOn() ? 'smooth' : 'instant' });   // the top of the section, not the middle of a form taller than a phone
+          (fine.matches ? own.querySelector('input') : head)?.focus({ preventScroll: true });   // a phone keeps its keyboard down until a field is touched
+          return;
+        }
+        open(a);
+      });
+    }
+    if (dlg.hasAttribute('data-comms-auto')) {
+      let seen = false;
+      try { seen = sessionStorage.getItem('sw-comms') === '1'; } catch {  }
+      const nav0 = performance.getEntriesByType?.('navigation')?.[0];
+      if (nav0 && nav0.type === 'reload') seen = false;   // the old site showed it again on a reload
+      const roomy = matchMedia('(min-width: 700px) and (min-height: 640px)');   // a phone's first screen is not covered
+      const arm = () => setTimeout(() => {
+        if (dlg.open || !roomy.matches || html.classList.contains('vt') || html.classList.contains('is-riding') || menuOpen()) return;
+        try { sessionStorage.setItem('sw-comms', '1'); } catch {  }
+        open(null);
+      }, 2000);
+      if (!seen) {
+        if (html.classList.contains('gate-pending')) addEventListener('sw-aboard', arm, { once: true });
+        else if (document.readyState === 'complete') arm();
+        else addEventListener('load', arm, { once: true });
+      }
+    }
+  })();
 })();

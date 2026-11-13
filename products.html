@@ -7,7 +7,7 @@
 <meta name="description" content="Every Space Weed product starts as Flash Frozen Cured flower, frozen within an hour of harvest. See the flower, pre-rolls and capsules. For adults 21+.">
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#080C14">
+<meta name="theme-color" content="#04070C">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'">
 <link rel="canonical" href="https://workflo17.github.io/spaceweed-site/products.html">
 <meta property="og:type" content="website">
@@ -40,12 +40,11 @@
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" aria-describedby="gate-legal">
   <div class="gate__scrim" aria-hidden="true"></div>
-  <div class="gate__beam" aria-hidden="true"></div>
   <div class="gate__panel">
     <span class="plate__c"></span>
-    <p class="tag tag--ice gate__hail">Incoming hail · <span translate="no">Space&nbsp;Weed</span></p>
+    <p class="tag tag--ice gate__hail">At the airlock · <span translate="no">Space&nbsp;Weed</span></p>
     <picture><source type="image/webp" srcset="assets/img/wordmark-white-300.webp 300w, assets/img/wordmark-white-600.webp 600w" sizes="144px"><img class="gate__mark" src="assets/img/wordmark-white-300.png" alt="Space Weed" width="600" height="370"></picture>
-    <p class="gate__invite">Permission to come aboard? This ship carries adults only.</p>
+    <p class="gate__invite">This ship carries adults only.</p>
     <h2 class="gate__q" id="gate-q">Have you existed on this Earth for 21+ years?</h2>
     <div class="gate__buttons">
       <button class="button" type="button" data-gate="yes"><span class="button__in">Yes, I’m 21&nbsp;or older</span></button>
@@ -57,14 +56,59 @@
       <button class="textlink gate__back" type="button" data-gate="back">Back to the question</button>
     </div>
   </div>
-  <p class="gate__status" aria-hidden="true"><span class="gate__led"></span><span data-gate-status>Transporter · standing by</span></p>
+  <p class="gate__status" aria-hidden="true">Earth from lunar orbit · NASA LRO</p>
 </div>
 
+<dialog class="comms" id="comms" aria-labelledby="comms-title">
+  <form class="form plate" data-contact="info@spaceweedusa.com" method="post" action="mailto:info@spaceweedusa.com" enctype="text/plain">
+  <span class="plate__c"></span>
+  <div class="comms__bar"><p class="tag tag--ice">Mission Control</p><button class="textlink comms__close" type="button" data-comms-close>Close</button></div>
+  <h2 class="sub comms__title" id="comms-title" tabindex="-1">Contact Us.</h2>
+  <div class="form__row">
+    <label for="d-email">Email <span class="small">(required)</span></label>
+    <input id="d-email" name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false" required>
+  </div>
+  <div class="form__row">
+    <label for="d-phone">Phone</label>
+    <input id="d-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+  </div>
+  <div class="form__pair2">
+    <div class="form__row">
+      <label for="d-first">First name</label>
+      <input id="d-first" name="first" type="text" autocomplete="given-name" spellcheck="false">
+    </div>
+    <div class="form__row">
+      <label for="d-last">Last name</label>
+      <input id="d-last" name="last" type="text" autocomplete="family-name" spellcheck="false">
+    </div>
+  </div>
+  <div class="form__row">
+    <label for="d-about">How can we help?</label>
+    <select id="d-about" name="about">
+      <option value="">Choose one</option>
+      <option>Where can I find Space Weed?</option>
+      <option>I’m a budtender or a dispensary</option>
+      <option>I’m a grower or producer interested in licensing</option>
+      <option>Press</option>
+      <option>Something else</option>
+    </select>
+  </div>
+  <div class="form__row">
+    <label for="d-message">Message</label>
+    <textarea id="d-message" name="message" autocomplete="off"></textarea>
+  </div>
+  <button class="button" type="submit"><span class="button__in">Send</span></button>
+  <p class="small form__note">The button opens the message in your own mail app; nothing is sent from this page. If nothing opens, write to <a href="mailto:info@spaceweedusa.com">info@spaceweedusa.com</a>.</p>
+  <p class="small form__status" data-form-note role="status"></p>
+</form>
+</dialog>
+
+
 <div class="deck" aria-hidden="true">
-  <span class="deck__item deck__item--name"><span translate="no">Space&nbsp;Weed</span> · <span id="deck-name">Cargo bay</span></span>
+  <span class="deck__item deck__item--name"><span translate="no">Space&nbsp;Weed</span> · <span id="deck-name">Products</span></span>
   <span class="deck__item deck__item--where">Deck <span id="deck-where">01</span></span>
   <span class="deck__item">Voyage <span class="deck__num" id="deck-voyage">00</span>%</span>
-  <span class="deck__item deck__item--stage">Stage <span id="deck-stage">—</span></span>
+  <span class="deck__item deck__item--stage">Stage <span id="deck-stage">--</span></span>
   <span class="deck__item deck__item--utc">UTC <span id="deck-utc">--:--</span></span>
   <span class="deck__item deck__item--age">21+</span>
   <span class="deck__led"></span>
@@ -106,7 +150,7 @@
   <div class="intro__lede">
     <p class="lead">Every <span translate="no">Space&nbsp;Weed</span> product starts as Flash&nbsp;Frozen&nbsp;Cured flower: frozen within an hour of harvest, dried under vacuum, with over 80% of its water gone.</p>
     <p class="age">For adults 21+.</p>
-    <a class="button" href="find.html"><span class="button__in">Where to find it</span></a>
+    <a class="button" href="process.html" aria-label="Learn more about Flash Frozen Curing"><span class="button__in">Learn more</span></a>
   </div>
   <figure class="intro__pic">
     <picture>
@@ -165,7 +209,7 @@
       <i class="gangway__rail"></i>
     </div>
   </div>
-  <p class="gangway__tag tag">The manifest · three chambers in the bay</p>
+  <p class="gangway__tag tag">The manifest<span class="gangway__more"> · three chambers in the bay</span></p>
   <p class="gangway__hud tag" data-hud></p>
 </figure>
       <div class="run__aside">
@@ -177,7 +221,7 @@
       <div class="run__plate">
         <p class="tag" data-type>Cargo bay · manifest</p>
         <h2 class="head" id="products-title">Three products.</h2>
-        <p class="lead">Flower, pre-rolls and capsules. Ask your store which strains are on the shelf this week.</p>
+        <p class="lead">Flower, pre-rolls and capsules.</p>
       </div>
     </div>
     <ul class="cargo__bays manifest__bays run__words">
@@ -188,7 +232,7 @@
             <img src="assets/img/jar-open-1400.jpg" srcset="assets/img/jar-open-700.jpg 700w, assets/img/jar-open-800.jpg 800w, assets/img/jar-open-1400.jpg 1400w" sizes="(min-width: 600px) 30vw, 92vw" width="1400" height="963" loading="lazy" decoding="async" alt="A closed Space Weed jar standing on white, with green buds inside it and beside it.">
           </picture>
           <h3 class="sub">Flower</h3>
-          <p class="small">Our flower is different from other brands because it’s Flash&nbsp;Frozen&nbsp;Cured. Removing excess moisture also gives our flower a unique, soft texture, making it easy and fun to break apart; no grinder necessary!</p>
+          <p class="small"><span translate="no">Space&nbsp;Weed</span> is Flash&nbsp;Frozen&nbsp;Cured to preserve cannabis in its freshest state. Removing excess moisture also gives our flower a unique, soft texture, making it easy and fun to break apart; no grinder necessary!</p>
         </div>
       </li>
       <li class="bay run__word">
@@ -219,7 +263,7 @@
 <section class="grid section shelf" aria-labelledby="shelf-title">
   <div class="shelf__head" data-reveal>
     <p class="tag" data-type>Cargo bay · in the jar</p>
-    <h2 class="head" id="shelf-title">As it reaches the shelf.</h2>
+    <h2 class="head" id="shelf-title">The real jar.</h2>
   </div>
   <figure class="shelf__pic plate" data-reveal>
     <span class="plate__c"></span>
@@ -252,13 +296,20 @@
     <div class="pair__b" data-reveal>
       <h2 class="head" id="jar-title">Same weight. Twice the jar.</h2>
       <p>Flash&nbsp;Frozen&nbsp;Curing removes over 80% of the water weight. A gram of <span translate="no">Space&nbsp;Weed</span> fills the jar like two.</p>
-      <p>At the counter, ask the budtender to show you the jar next to a conventionally cured gram. You’ll see the difference before anyone explains it.</p>
       <div class="actions">
-        <a class="button" href="find.html"><span class="button__in">Where to find it</span></a>
-        <a class="textlink" href="partner.html#stores-title">Stock it in your store</a>
+        <a class="textlink" href="partner.html#stores-title">Carry it in your dispensary</a>
       </div>
     </div>
 </section>
+
+<nav class="grid section exits" aria-labelledby="exits-tag">
+  <p class="tag exits__tag" id="exits-tag">Where next</p>
+  <ul class="exits__list">
+      <li><a class="door door--inline" href="process.html"><span class="door__frame"><span class="door__glass"></span><span class="door__seam"></span></span><span class="door__name tag tag--ice">Enter · Learn</span></a></li>
+      <li><a class="door door--inline" href="partner.html"><span class="door__frame"><span class="door__glass"></span><span class="door__seam"></span></span><span class="door__name tag tag--ice">Enter · Partner</span></a></li>
+      <li><a class="door door--inline" href="contact.html" data-comms><span class="door__frame"><span class="door__glass"></span><span class="door__seam"></span></span><span class="door__name tag tag--ice">Enter · Mission Control</span></a></li>
+  </ul>
+</nav>
 
 </main>
 
@@ -276,21 +327,22 @@
       <li><a href="products.html">Products</a></li>
       <li><a href="partner.html">Partner</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="classified.html">Classified</a></li>
-      <li><a href="contact.html">Mission Control</a></li>
+      <li><a href="classified.html">Join as a cadet (21+)</a></li>
+      <li><a href="contact.html" data-comms>Mission Control</a></li>
       <li><a href="find.html">Where to find it</a></li>
       <li><a href="https://shopspaceweed.com" target="_blank" rel="noopener">Merch<span class="vh"> (opens the merch shop in a new tab)</span></a></li>
       <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="https://www.cannagenesis.com/">CannaGenesis</a></li>
+      <li><a href="https://www.cannagenesis.com/">CannaGenesis<span class="sr"> (a separate site)</span></a></li>
     </ul>
     <div class="foot__credits">
-      <p class="foot__agency small">Ship interiors made with AI. Space pictures: NASA, ESA/Webb, ESO. Not affiliated with or endorsed by any space agency.</p>
+      <p class="foot__agency small">Ship pictures made with AI. Space pictures: NASA, ESA/Webb, ESO. Not affiliated with or endorsed by any space agency.</p>
       <p class="foot__credit small">The Milky Way: <a href="https://www.eso.org/public/images/eso0932a/">ESO/S. Brunier</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, cropped and dimmed.</p>
     </div>
   </div>
 </footer>
 
 <script src="assets/run-auto.v1.js" defer></script>
+<script src="assets/contact-form.v1.js" defer></script>
 <script src="assets/site.v1.js" defer></script>
 
 </body>

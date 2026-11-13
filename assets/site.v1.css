@@ -23,3 +23,32 @@
 
 /* boarding mock: on the narrowest phones the logo gets its room back (21+ stays in the top bar) */
 @media (max-width:359px){.top .top__age{display:none}.top .top__action{padding-left:0.7rem;padding-right:0.7rem}}
+/* from Don's 11 Nov draft: the Mission Control window and the Where next doors */
+.exits{row-gap:1rem;align-items:center}
+.exits__tag{grid-column:1 / -1;justify-self:start;color:var(--muted)}
+.exits__list{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:0.5rem clamp(1.5rem,4vw,3rem);margin:0;padding:0;list-style:none}
+.exits__list .door{min-height:3rem}
+.band + .exits{margin-top:clamp(3rem,6vw,5rem)}
+.comms{width:min(40rem,calc(100% - 2 * var(--margin)));max-width:none;max-height:calc(100dvh - 2 * var(--margin));margin:auto;padding:2px;border:0;background:none;color:var(--ink);overflow:auto;overscroll-behavior:contain;scroll-padding-top:4.5rem}
+.comms::backdrop{background:rgba(4,7,12,0.78)}
+.comms .form{display:flex;flex-direction:column;gap:0.9rem;max-width:none;padding-top:0;background:rgba(10,20,36,0.97)}
+.comms .form__pair{gap:0.9rem 1.25rem}
+.comms .form textarea{min-height:4.5rem}
+.comms__bar{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-inline:calc(-1 * var(--form-pad));padding:var(--form-pad) var(--form-pad) 0.6rem;background:var(--night);border-bottom:1px solid var(--line)}
+.comms__title{margin-top:-0.25rem}
+html.comms-open{overflow:hidden}
+html.comms-open.comms-bar{padding-right:var(--comms-sbw,0px)}
+html.comms-open.comms-bar .hud,html.comms-open.comms-bar .scope{right:var(--comms-sbw,0px)}
+html.comms-open.comms-bar .progress{width:calc(100% - var(--comms-sbw,0px))}
+.comms--dossier{width:min(56rem,calc(100% - 2 * var(--margin)))}
+.comms--dossier .dossier__form{display:grid;gap:1.25rem;max-width:none;padding:1rem 0 0;background:none;container-type:normal}
+@container (min-width:44rem){.comms--dossier .dossier__form{grid-template-columns:minmax(0,1fr) minmax(0,24rem);column-gap:0;row-gap:1.1rem}}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off).js .comms[open]{animation:comms-in var(--t-ui) var(--ease-out) both}}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off).js .comms[open]::backdrop{animation:comms-fade var(--t-ui) ease both}}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off).js .comms--dossier[open] .redact::after{animation:dossier-clear 360ms var(--ease-travel) var(--at) both}}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off).js .comms--dossier[open] .dossier__st--was{display:block;animation:dossier-stamp 160ms var(--ease-exit) 120ms both,dossier-out 140ms ease 940ms forwards}}
+@media (prefers-reduced-motion:no-preference){html:not(.motion-off).js .comms--dossier[open] .dossier__st--now{animation:dossier-stamp-now 200ms var(--ease-out) 980ms both}}
+@keyframes comms-in{from{opacity:0;transform:translateY(12px)}}
+@keyframes comms-fade{from{opacity:0}}
+@media print{.gate,.comms,.dossiertab,.menu-btn,.skip,.scrub,.readout,.chips,.clip-toggle,.gate__back,.sky-photo,canvas.sky,.hold,.grain,.hud,.scope,.bulkhead,.progress,.motion-btn,.hero__sky,.intro__sky,.deck,.reticle{display:none !important}}
+@media (max-width:479px){.gangway__more{display:none}}
